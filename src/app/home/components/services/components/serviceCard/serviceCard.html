@@ -1,0 +1,17 @@
+<div
+  class="group relative overflow-hidden rounded-lg border border-border bg-[#ffff] p-8 transition-all hover:border-purple-950"
+>
+  <mat-icon aria-hidden="false" [fontIcon]="icon()"></mat-icon>
+
+  <h3 class="mb-2 text-lg font-semibold text-foreground text-purple-950">
+    {{ title() }}
+  </h3>
+
+  <p class="text-sm leading-relaxed text-muted-foreground">
+    {{ description() }}
+  </p>
+
+  <div
+    class="absolute bottom-0 left-0 h-0.5 w-0 bg-purple-900 transition-all duration-300 group-hover:w-full"
+  ></div>
+</div>

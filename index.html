@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OwlSolutions - Transforma tu Empresa con ERP Inteligente</title>
+    <meta name="description" content="Digitaliza tu operación empresarial con nuestro ERP integrado. Aumenta la productividad, reduce costos y toma decisiones basadas en datos reales. Solicita tu demo gratuita.">
+    <meta name="keywords" content="ERP, software empresarial, automatización procesos, gestión empresarial, pyme">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="OwlSolutions - Transforma tu Empresa con ERP Inteligente">
+    <meta property="og:description" content="Digitaliza tu operación empresarial con nuestro ERP integrado. Aumenta la productividad, reduce costos y toma decisiones basadas en datos reales.">
+    <meta property="og:type" content="website">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav__container">
+                <div class="nav__logo">
+                    <img src="https://via.placeholder.com/150x40/2563eb/ffffff?text=OwlSolutions" alt="OwlSolutions Logo">
+                </div>
+                <div class="nav__menu">
+                    <a href="#beneficios" class="nav__link">Beneficios</a>
+                    <a href="#caracteristicas" class="nav__link">Características</a>
+                    <a href="#precios" class="nav__link">Precios</a>
+                    <a href="#testimonios" class="nav__link">Casos de Éxito</a>
+                    <button class="nav__cta">Solicitar Demo</button>
+                </div>
+                <div class="nav__mobile">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero__container">
+            <div class="hero__content">
+                <div class="hero__text">
+                    <h1 class="hero__title">
+                        Digitaliza tu Operación y 
+                        <span class="hero__highlight">Multiplica tu Productividad</span>
+                        con ERP Inteligente
+                    </h1>
+                    <p class="hero__subtitle">
+                        Elimina los procesos manuales, optimiza tus recursos y toma decisiones basadas en datos reales. 
+                        Nuestra solución ERP integrada está diseñada específicamente para PYMEs que buscan crecer.
+                    </p>
+                    <div class="hero__buttons">
+                        <button class="btn btn--primary hero__btn" onclick="scrollToForm()">
+                            <i class="fas fa-rocket"></i>
+                            Solicitar Demo Gratuita
+                        </button>
+                        <button class="btn btn--secondary hero__btn" onclick="scrollToForm()">
+                            <i class="fas fa-play"></i>
+                            Comenzar Prueba Sin Compromiso
+                        </button>
+                    </div>
+                    <div class="hero__stats">
+                        <div class="stat">
+                            <span class="stat__number">+500</span>
+                            <span class="stat__label">Empresas Digitalizadas</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__number">40%</span>
+                            <span class="stat__label">Reducción de Costos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__number">60%</span>
+                            <span class="stat__label">Aumento de Eficiencia</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__form-container">
+                    <div class="lead-form">
+                        <div class="lead-form__header">
+                            <h3>¡Comienza tu Transformación Digital Hoy!</h3>
+                            <p>Obtén acceso inmediato a nuestra demo personalizada</p>
+                        </div>
+                        <form id="leadForm" class="lead-form__form">
+                            <div class="form-group">
+                                <input type="text" id="nombre" name="nombre" placeholder="Nombre Completo" required>
+                                <span class="error-message" id="nombre-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="empresa" name="empresa" placeholder="Nombre de la Empresa" required>
+                                <span class="error-message" id="empresa-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Correo Electrónico" required>
+                                <span class="error-message" id="email-error"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
+                                <span class="error-message" id="telefono-error"></span>
+                            </div>
+                            <button type="submit" class="btn btn--primary btn--full">
+                                <i class="fas fa-paper-plane"></i>
+                                Solicitar Demo Ahora
+                            </button>
+                            <p class="form-note">Sin compromiso. Protegemos tu información.</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="beneficios" class="benefits">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Transforma tu Operación con Resultados Medibles</h2>
+                <p class="section__subtitle">Descubre cómo nuestras soluciones ERP transforman realidades empresariales</p>
+            </div>
+            <div class="benefits__grid">
+                <div class="benefit-card">
+                    <div class="benefit-card__icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 class="benefit-card__title">Eficiencia Operativa</h3>
+                    <p class="benefit-card__description">
+                        Reduce tiempos de proceso hasta en un <strong>60%</strong> mediante la automatización 
+                        de tareas repetitivas y la eliminación de cuellos de botella operativos.
+                    </p>
+                    <div class="benefit-card__result">
+                        <span class="result__metric">60% más rápido</span>
+                        <span class="result__desc">en procesos clave</span>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card__icon">
+                        <i class="fas fa-chart-line-down"></i>
+                    </div>
+                    <h3 class="benefit-card__title">Reducción de Costos</h3>
+                    <p class="benefit-card__description">
+                        Disminuye gastos operativos y administrativos en un <strong>40%</strong> 
+                        eliminando redundancias, errores costosos y optimizando el uso de recursos.
+                    </p>
+                    <div class="benefit-card__result">
+                        <span class="result__metric">40% menos costos</span>
+                        <span class="result__desc">en operaciones</span>
+                    </div>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card__icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3 class="benefit-card__title">Optimización de Flujos</h3>
+                    <p class="benefit-card__description">
+                        Mejora la coordinación entre departamentos en un <strong>75%</strong> 
+                        y acelera los ciclos de negocio con información en tiempo real.
+                    </p>
+                    <div class="benefit-card__result">
+                        <span class="result__metric">75% mejor coordinación</span>
+                        <span class="result__desc">entre equipos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="caracteristicas" class="features">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Funcionalidades que Impulsan tu Crecimiento</h2>
+                <p class="section__subtitle">Todas las herramientas que necesitas para gestionar tu empresa en un solo lugar</p>
+            </div>
+            <div class="features__grid">
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <div class="feature-card__content">
+                        <h3 class="feature-card__title">Gestión Integral de Inventarios</h3>
+                        <p class="feature-card__description">
+                            Control de stock en tiempo real con alertas automáticas de reposición, 
+                            seguimiento detallado de movimientos y optimización de niveles de inventario.
+                        </p>
+                        <div class="feature-card__example">
+                            <strong>Ejemplo práctico:</strong> 
+                            <span>Recibe notificaciones cuando tus productos estén por agotarse 
+                            y genera órdenes de compra automáticas con un clic.</span>
+                        </div>
+                        <ul class="feature-card__list">
+                            <li>Control multialmacén</li>
+                            <li>Códigos de barras integrados</li>
+                            <li>Rotación ABC automática</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <i class="fas fa-file-invoice"></i>
+                    </div>
+                    <div class="feature-card__content">
+                        <h3 class="feature-card__title">Facturación Electrónica</h3>
+                        <p class="feature-card__description">
+                            Cumplimiento total con normativas locales, generación automática de 
+                            comprobantes y conexión directa con administraciones tributarias.
+                        </p>
+                        <div class="feature-card__example">
+                            <strong>Ejemplo práctico:</strong> 
+                            <span>Emite facturas en segundos desde cualquier dispositivo, 
+                            con envío automático al cliente y registro contable instantáneo.</span>
+                        </div>
+                        <ul class="feature-card__list">
+                            <li>Facturas, boletas y notas de crédito</li>
+                            <li>Envío automático por email</li>
+                            <li>Integración contable completa</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="feature-card__content">
+                        <h3 class="feature-card__title">CRM Integrado</h3>
+                        <p class="feature-card__description">
+                            Centraliza toda la información de tus clientes, historial de interacciones 
+                            y oportunidades comerciales en una plataforma unificada.
+                        </p>
+                        <div class="feature-card__example">
+                            <strong>Ejemplo práctico:</strong> 
+                            <span>Visualiza el historial completo de cada cliente, 
+                            desde la primera cotización hasta la post-venta, con recordatorios automáticos.</span>
+                        </div>
+                        <ul class="feature-card__list">
+                            <li>Seguimiento de oportunidades</li>
+                            <li>Automatización de campañas</li>
+                            <li>Análisis de satisfacción</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="feature-card__content">
+                        <h3 class="feature-card__title">Analytics en Tiempo Real</h3>
+                        <p class="feature-card__description">
+                            Dashboards personalizables con KPIs preconfigurados y capacidad 
+                            de generar reportes personalizados con un clic.
+                        </p>
+                        <div class="feature-card__example">
+                            <strong>Ejemplo práctico:</strong> 
+                            <span>Monitorea tus ventas diarias, rotación de inventario 
+                            y rentabilidad por producto en tiempo real desde tu móvil.</span>
+                        </div>
+                        <ul class="feature-card__list">
+                            <li>Reportes automáticos por email</li>
+                            <li>Análisis predictivo</li>
+                            <li>Exportación en múltiples formatos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonios" class="testimonials">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Casos de Éxito que Nos Respaldan</h2>
+                <p class="section__subtitle">Más de 500 empresas ya transformaron su operación con nosotros</p>
+            </div>
+            <div class="testimonials__grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-card__header">
+                        <div class="testimonial-card__avatar">
+                            <img src="https://via.placeholder.com/60x60/2563eb/ffffff?text=MR" alt="María Rodríguez">
+                        </div>
+                        <div class="testimonial-card__info">
+                            <h4 class="testimonial-card__name">María Rodríguez</h4>
+                            <p class="testimonial-card__position">Gerente General</p>
+                            <p class="testimonial-card__company">Distribuciones Andinas S.A.C.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-card__content">
+                        <div class="testimonial-card__rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-card__text">
+                            "Redujimos nuestros tiempos de inventario en un 45% y ahora podemos 
+                            tomar decisiones basadas en datos reales. La implementación fue más 
+                            rápida de lo esperado y el equipo de soporte ha sido excepcional."
+                        </p>
+                        <div class="testimonial-card__result">
+                            <span class="result__highlight">45% reducción</span>
+                            <span class="result__desc">en tiempos de inventario</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-card__header">
+                        <div class="testimonial-card__avatar">
+                            <img src="https://via.placeholder.com/60x60/059669/ffffff?text=CL" alt="Carlos López">
+                        </div>
+                        <div class="testimonial-card__info">
+                            <h4 class="testimonial-card__name">Carlos López</h4>
+                            <p class="testimonial-card__position">Director de Operaciones</p>
+                            <p class="testimonial-card__company">Tecnología Industrial del Perú</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-card__content">
+                        <div class="testimonial-card__rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-card__text">
+                            "El sistema de facturación electrónica nos ha ahorrado 3 días de trabajo 
+                            mensual. Ahora emitimos facturas en segundos y nuestros clientes 
+                            las reciben instantáneamente. La integración fue perfecta."
+                        </p>
+                        <div class="testimonial-card__result">
+                            <span class="result__highlight">3 días ahorrados</span>
+                            <span class="result__desc">al mes en facturación</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-card__header">
+                        <div class="testimonial-card__avatar">
+                            <img src="https://via.placeholder.com/60x60/dc2626/ffffff?text=AP" alt="Ana Paredes">
+                        </div>
+                        <div class="testimonial-card__info">
+                            <h4 class="testimonial-card__name">Ana Paredes</h4>
+                            <p class="testimonial-card__position">CEO</p>
+                            <p class="testimonial-card__company">Retail Fashion Group</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-card__content">
+                        <div class="testimonial-card__rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-card__text">
+                            "La visibilidad en tiempo real de nuestras operaciones nos permitió 
+                            identificar oportunidades de mejora que incrementaron nuestra 
+                            rentabilidad en un 32% en el primer año."
+                        </p>
+                        <div class="testimonial-card__result">
+                            <span class="result__highlight">32% incremento</span>
+                            <span class="result__desc">en rentabilidad anual</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clients__logos">
+                <div class="clients__title">Empresas que confían en nosotros</div>
+                <div class="clients__grid">
+                    <img src="https://via.placeholder.com/120x60/e5e7eb/6b7280?text=Cliente+1" alt="Cliente 1" class="client-logo">
+                    <img src="https://via.placeholder.com/120x60/e5e7eb/6b7280?text=Cliente+2" alt="Cliente 2" class="client-logo">
+                    <img src="https://via.placeholder.com/120x60/e5e7eb/6b7280?text=Cliente+3" alt="Cliente 3" class="client-logo">
+                    <img src="https://via.placeholder.com/120x60/e5e7eb/6b7280?text=Cliente+4" alt="Cliente 4" class="client-logo">
+                    <img src="https://via.placeholder.com/120x60/e5e7eb/6b7280?text=Cliente+5" alt="Cliente 5" class="client-logo">
+                    <img src="https://via.placeholder.com/120x60/e5e7eb/6b7280?text=Cliente+6" alt="Cliente 6" class="client-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="precios" class="pricing">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Planes que se Adaptan a tu Negocio</h2>
+                <p class="section__subtitle">Elige el plan perfecto para hacer crecer tu empresa</p>
+            </div>
+            <div class="pricing__grid">
+                <div class="pricing-card">
+                    <div class="pricing-card__header">
+                        <h3 class="pricing-card__title">Esencial</h3>
+                        <p class="pricing-card__subtitle">Para empresas en crecimiento</p>
+                        <div class="pricing-card__price">
+                            <span class="price__currency">$</span>
+                            <span class="price__amount">99</span>
+                            <span class="price__period">/mes</span>
+                        </div>
+                        <p class="pricing-card__billed">Facturado anualmente</p>
+                    </div>
+                    <div class="pricing-card__features">
+                        <ul class="features__list">
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                Hasta 5 usuarios
+                            </li>
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                Gestión de inventarios
+                            </li>
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                Facturación electrónica
+                            </li>
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                Reportes básicos
+                            </li>
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                Soporte por email
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn btn--outline pricing-card__btn" onclick="selectPlan('esencial')">
+                        Comenzar Ahora
+                    </button>
+                </div>
+                <div class="pricing-card pricing-card--featured">
+                    <div class="pricing-card__badge">Más Popular</div>
+                    <div class="pricing-card__header">
+                        <h3 class="pricing-card__title">Profesional</h3>
+                        <p class="pricing-card__subtitle">Para empresas consolidadas</p>
+                        <div class="pricing-card__price">
+                            <span class="price__currency">$</span>
+                            <span class="price__amount">199</span>
+                            <span class="price__period">/mes</span>
+                        </div>
+                        <p class="pricing-card__billed">Facturado anualmente</p>
+                    </div>
+                    <div class="pricing-card__features">
+                        <ul class="features__list">
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                Hasta 15 usuarios
+                            </li>
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                Todo lo del plan Esencial
+                            </li>
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                CRM completo
+                            </li>
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                Analytics avanzado
+                            </li>
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                Integraciones API
+                            </li>
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                Soporte prioritario 24/7
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn btn--primary pricing-card__btn" onclick="selectPlan('profesional')">
+                        Comenzar Ahora
+                    </button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-card__header">
+                        <h3 class="pricing-card__title">Empresarial</h3>
+                        <p class="pricing-card__subtitle">Para grandes organizaciones</p>
+                        <div class="pricing-card__price">
+                            <span class="price__currency">$</span>
+                            <span class="price__amount">399</span>
+                            <span class="price__period">/mes</span>
+                        </div>
+                        <p class="pricing-card__billed">Facturado anualmente</p>
+                    </div>
+                    <div class="pricing-card__features">
+                        <ul class="features__list">
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                Usuarios ilimitados
+                            </li>
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                Todo lo del plan Profesional
+                            </li>
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                Personalización completa
+                            </li>
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                Implementación dedicada
+                            </li>
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                Capacitación presencial
+                            </li>
+                            <li class="feature__item">
+                                <i class="fas fa-check"></i>
+                                Gerente de cuenta dedicado
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn btn--outline pricing-card__btn" onclick="selectPlan('empresarial')">
+                        Contactar Ventas
+                    </button>
+                </div>
+            </div>
+            <div class="pricing__note">
+                <p>
+                    <i class="fas fa-shield-alt"></i>
+                    Garantía de satisfacción de 30 días o te devolvemos tu dinero
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta__content">
+                <h2 class="cta__title">¿Listo para Transformar tu Empresa?</h2>
+                <p class="cta__subtitle">
+                    Únete a más de 500 empresas que ya han digitalizado su operación y están 
+                    viendo resultados desde el primer mes.
+                </p>
+                <div class="cta__buttons">
+                    <button class="btn btn--primary btn--large" onclick="scrollToForm()">
+                        <i class="fas fa-rocket"></i>
+                        Solicitar Demo Gratuita
+                    </button>
+                    <button class="btn btn--secondary btn--large" onclick="scrollToForm()">
+                        <i class="fas fa-phone"></i>
+                        Hablar con un Experto
+                    </button>
+                </div>
+                <div class="cta__guarantee">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Garantía de satisfacción de 30 días</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <div class="footer__logo">
+                        <img src="https://via.placeholder.com/150x40/ffffff/2563eb?text=OwlSolutions" alt="OwlSolutions">
+                    </div>
+                    <p class="footer__description">
+                        Transformamos empresas peruanas mediante soluciones tecnológicas 
+                        de vanguardia que impulsan su crecimiento sostenible.
+                    </p>
+                    <div class="footer__social">
+                        <a href="#" class="social__link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social__link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social__link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer__section">
+                    <h4 class="footer__title">Soluciones</h4>
+                    <ul class="footer__links">
+                        <li><a href="#beneficios">Beneficios</a></li>
+                        <li><a href="#caracteristicas">Características</a></li>
+                        <li><a href="#precios">Precios</a></li>
+                        <li><a href="#testimonios">Casos de Éxito</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4 class="footer__title">Empresa</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Nosotros</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Carreras</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4 class="footer__title">Soporte</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Centro de Ayuda</a></li>
+                        <li><a href="#">Documentación</a></li>
+                        <li><a href="#">API</a></li>
+                        <li><a href="#">Estado del Servicio</a></li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h4 class="footer__title">Contacto</h4>
+                    <div class="footer__contact">
+                        <p><i class="fas fa-phone"></i> +51 1 234-5678</p>
+                        <p><i class="fas fa-envelope"></i> hola@owlsolutions.pe</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Lima, Perú</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 OwlSolutions. Todos los derechos reservados.</p>
+                <div class="footer__legal">
+                    <a href="#">Términos de Servicio</a>
+                    <a href="#">Política de Privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
