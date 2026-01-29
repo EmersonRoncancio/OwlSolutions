@@ -1,0 +1,27 @@
+<section class="border-y border-border bg-[#ffff] py-16">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <p
+      class="text-center text-sm font-medium uppercase tracking-wider text-muted-foreground text-purple-950"
+    >
+      Tecnologías con las que trabajamos
+    </p>
+
+    <div
+      class="mt-8 flex flex-wrap items-center justify-center gap-8 md:gap-12"
+    >
+      @for (tech of technologies(); track tech.name) {
+        <div class="group flex flex-col items-center gap-2">
+          <span
+            class="text-lg font-semibold text-foreground transition-colors group-hover:text-accent"
+          >
+            {{ tech.name }}
+          </span>
+
+          <span class="text-xs text-muted-foreground">
+            {{ tech.category }}
+          </span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
