@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 
 @Component({
   selector: 'nabvar',
@@ -6,4 +6,14 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './ nabvar.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Nabvar { }
+export class Nabvar {
+  mobileMenuOpen = signal(false);
+
+  toggleMobileMenu() {
+    this.mobileMenuOpen.set(!this.mobileMenuOpen());
+  }
+
+  closeMobileMenu() {
+    this.mobileMenuOpen.set(false);
+  }
+}
