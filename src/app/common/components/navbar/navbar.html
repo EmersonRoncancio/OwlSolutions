@@ -1,0 +1,78 @@
+<header
+  class="sticky top-0 z-50 border-b border-line bg-canvas/90 backdrop-blur-md supports-[backdrop-filter]:bg-canvas/80"
+>
+  <nav
+    class="mx-auto flex max-w-[1180px] items-center justify-between gap-6 px-6 py-4 lg:px-8"
+    aria-label="Navegación principal"
+  >
+    <a href="/" class="text-[22px] font-extrabold tracking-tight text-brand" aria-label="Siwina, ir al inicio">
+      Siwina
+    </a>
+
+    <ul class="hidden items-center gap-8 md:flex">
+      @for (link of links; track link.fragment) {
+        <li>
+          <a
+            [href]="link.fragment"
+            class="text-[15px] font-medium text-ink transition-colors hover:text-brand"
+          >
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <a
+      href="#contacto"
+      class="hidden rounded-[10px] bg-brand px-6 py-3 text-[15px] font-bold text-white shadow-lg shadow-brand/30 transition-colors hover:bg-brand-dark md:inline-flex"
+    >
+      Iniciar Proyecto
+    </a>
+
+    <button
+      type="button"
+      class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-ink md:hidden"
+      [attr.aria-expanded]="mobileMenuOpen()"
+      aria-controls="mobile-menu"
+      [attr.aria-label]="mobileMenuOpen() ? 'Cerrar menú' : 'Abrir menú'"
+      (click)="toggleMobileMenu()"
+    >
+      @if (mobileMenuOpen()) {
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      } @else {
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      }
+    </button>
+  </nav>
+
+  @if (mobileMenuOpen()) {
+    <div id="mobile-menu" class="border-t border-line bg-canvas md:hidden">
+      <ul class="flex flex-col px-6 py-4">
+        @for (link of links; track link.fragment) {
+          <li>
+            <a
+              [href]="link.fragment"
+              class="block py-3 text-base font-medium text-ink transition-colors hover:text-brand"
+              (click)="closeMobileMenu()"
+            >
+              {{ link.label }}
+            </a>
+          </li>
+        }
+        <li class="pt-3">
+          <a
+            href="#contacto"
+            class="inline-flex w-full items-center justify-center rounded-[10px] bg-brand px-6 py-3 font-bold text-white transition-colors hover:bg-brand-dark"
+            (click)="closeMobileMenu()"
+          >
+            Iniciar Proyecto
+          </a>
+        </li>
+      </ul>
+    </div>
+  }
+</header>

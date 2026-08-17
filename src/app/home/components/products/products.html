@@ -1,0 +1,15 @@
+<section id="productos" aria-labelledby="productos-title" class="pt-6">
+  <div class="mx-auto max-w-[1180px] px-6 pb-14 text-center lg:px-8">
+    <p class="mb-3.5 text-[13px] font-bold tracking-[0.08em] text-brand uppercase">Productos</p>
+    <h2 id="productos-title" class="mb-3.5 text-[30px] font-extrabold tracking-tight sm:text-[38px]">
+      Tres productos, un mismo estándar
+    </h2>
+    <p class="mx-auto max-w-[560px] text-[17px] text-muted">
+      Cada uno resuelve un problema puntual de tu operación y se puede adoptar por separado.
+    </p>
+  </div>
+
+  @for (product of products; track product.id) {
+    <app-product-section [product]="product" />
+  }
+</section>

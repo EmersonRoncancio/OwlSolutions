@@ -1,12 +1,13 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Nabvar } from "./common/components/ nabvar/ nabvar";
+import { Navbar } from './common/components/navbar/navbar';
+import { Footer } from './common/components/footer/footer';
+import { WhatsApp } from './common/components/whatsapp/whatsapp';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Nabvar],
+  imports: [RouterOutlet, Navbar, Footer, WhatsApp],
   templateUrl: './app.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class App {
-  protected readonly title = signal('OwlSolutions');
-}
+export class App {}

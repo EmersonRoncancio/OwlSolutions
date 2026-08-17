@@ -1,0 +1,39 @@
+<footer class="border-t border-line pt-14 pb-8">
+  <div
+    class="mx-auto grid max-w-[1180px] grid-cols-1 gap-10 px-6 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr] lg:px-8"
+  >
+    <div>
+      <p class="mb-3 text-xl font-extrabold text-brand">Siwina</p>
+      <p class="max-w-[280px] text-sm leading-relaxed text-muted">
+        Productos de software que resuelven problemas reales de negocio: facturación, atención y
+        ventas.
+      </p>
+    </div>
+
+    @for (column of columns; track column.title) {
+      <nav [attr.aria-label]="column.title">
+        <h2 class="mb-3.5 text-sm font-bold">{{ column.title }}</h2>
+        <ul class="flex flex-col gap-2.5">
+          @for (link of column.links; track link.label) {
+            <li>
+              <a
+                [href]="link.href"
+                [attr.target]="link.external ? '_blank' : null"
+                [attr.rel]="link.external ? 'noopener noreferrer' : null"
+                class="text-sm text-muted transition-colors hover:text-brand"
+              >
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
+    }
+  </div>
+
+  <div class="mx-auto mt-8 max-w-[1180px] border-t border-line px-6 pt-6 text-center lg:px-8">
+    <small class="text-[13px] text-slate-soft">
+      © {{ year }} Siwina. Todos los derechos reservados.
+    </small>
+  </div>
+</footer>

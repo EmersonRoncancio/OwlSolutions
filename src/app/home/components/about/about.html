@@ -1,82 +1,25 @@
-<section id="nosotros" class="border-t border-gray-100 bg-white py-24">
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-      <!-- Content -->
-      <div>
-        <span class="text-sm font-medium uppercase tracking-wider text-[#902bcc]"> Nosotros </span>
-
-        <h2 class="mt-2 text-balance text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Construyendo el futuro digital de tu negocio
-        </h2>
-
-        <p class="mt-6 text-pretty text-lg leading-relaxed text-gray-600">
-          En Siwina somos un equipo joven y apasionado comprometido con transformar ideas en
-          soluciones digitales innovadoras que impulsen el éxito de nuestros clientes.
-        </p>
-
-        <p class="mt-4 text-pretty text-gray-500">
-          Trabajamos con las tecnologías más modernas del mercado, enfocándonos en entregar calidad,
-          escalabilidad y experiencias de usuario excepcionales en cada proyecto.
-        </p>
-
-        <!-- Values Grid -->
-        <div class="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
-          @for (value of values(); track value) {
-            <div class="flex items-center gap-3">
-              <svg
-                class="h-5 w-5 flex-shrink-0 text-[#902bcc]"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <span class="text-sm font-medium text-gray-700">{{ value }}</span>
-            </div>
-          }
-        </div>
-      </div>
-
-      <!-- Visual Element -->
-      <div class="relative">
-        <div class="grid grid-cols-2 gap-4">
-          <div class="space-y-4">
-            <div class="h-48 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-              <div class="text-4xl font-extrabold text-[#902bcc]">2+</div>
-              <div class="mt-2 text-sm font-medium text-gray-500">
-                Años creciendo junto a nuestros clientes
-              </div>
-            </div>
-
-            <div
-              class="h-32 rounded-xl bg-gradient-to-br from-[#902bcc] to-[#7b22b0] p-6 shadow-lg shadow-[#902bcc]/20"
-            >
-              <div class="text-4xl font-extrabold text-white">5+</div>
-              <div class="mt-2 text-sm font-medium text-white/80">Especialistas dedicados</div>
-            </div>
-          </div>
-
-          <div class="space-y-4 pt-8">
-            <div
-              class="h-32 rounded-xl bg-gradient-to-br from-[#902bcc] to-[#7b22b0] p-6 shadow-lg shadow-[#902bcc]/20"
-            >
-              <div class="text-4xl font-extrabold text-white">2+</div>
-              <div class="mt-2 text-sm font-medium text-white/80">Países alcanzados</div>
-            </div>
-
-            <div class="h-48 rounded-xl border border-[#902bcc]/20 bg-[#902bcc]/5 p-6">
-              <div class="text-4xl font-extrabold text-[#902bcc]">30+</div>
-              <div class="mt-2 text-sm font-medium text-gray-500">
-                Proyectos exitosos completados
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<section
+  id="nosotros"
+  aria-labelledby="nosotros-title"
+  class="mx-auto max-w-[1180px] px-6 py-20 lg:px-8 lg:py-[88px]"
+>
+  <div class="mx-auto mb-12 max-w-[640px] text-center">
+    <p class="mb-3.5 text-[13px] font-bold tracking-[0.08em] text-brand uppercase">Nosotros</p>
+    <h2 id="nosotros-title" class="mb-3.5 text-[26px] font-extrabold tracking-tight sm:text-[32px]">
+      Un equipo enfocado en productos, no solo en proyectos
+    </h2>
+    <p class="text-base leading-relaxed text-muted">
+      Construimos software propio para resolver problemas reales de negocio: facturación, atención y
+      ventas — con desarrollo a la medida cuando tu caso lo requiere.
+    </p>
   </div>
+
+  <ul class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    @for (item of differentiators; track item.title) {
+      <li class="rounded-xl border border-line bg-white p-6">
+        <h3 class="mb-1.5 text-[15px] font-bold">{{ item.title }}</h3>
+        <p class="text-[13.5px] text-muted">{{ item.description }}</p>
+      </li>
+    }
+  </ul>
 </section>

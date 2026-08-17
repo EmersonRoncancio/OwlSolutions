@@ -8,12 +8,11 @@ Siwina es una plataforma web moderna construida con Angular 21 que muestra los s
 
 - **Landing Page Moderna**: Diseño responsivo con animaciones y efectos visuales
 - **Secciones Principales**:
-  - Hero Section con llamado a la acción
-  - Servicios de desarrollo web, móvil y empresarial
-  - Portafolio de proyectos exitosos
-  - Tecnologías utilizadas
-  - Información de la empresa
-  - Formulario de contacto
+  - Hero con llamado a la acción
+  - Productos: POS con facturación DIAN, agentes de IA y plataforma de ventas
+  - Nosotros / diferenciadores
+  - Clientes que confían en Siwina
+  - CTA de contacto
 - **Navegación Responsive**: Menú adaptable para desktop y móvil
 - **Integración con WhatsApp**: Botones de contacto directo
 - **Diseño Modular**: Componentes reutilizables y escalables
@@ -121,6 +120,44 @@ ng test
 - **Animaciones Suaves**: Transiciones y efectos hover
 - **Modo Claro/Oscuro**: Variables CSS personalizables
 - **Accesibilidad**: Estructura semántica y navegación por teclado
+
+## 🖼️ Imágenes de la landing
+
+Las imágenes del hero y de los tres productos viven en `public/images/`. Son recortes con canal
+alfa, ya redimensionados y comprimidos desde los originales del diseño:
+
+| Archivo                    | Dimensiones | WebP  | Uso                         |
+| -------------------------- | ----------- | ----- | --------------------------- |
+| `hero-composed.png`        | 1120 × 840  | 140 K | Hero (LCP, con `preload`)   |
+| `hero-composed-720.webp`   | 720 × 540   | 72 K  | Variante móvil del hero     |
+| `pos-barista.png`          | 566 × 680   | 68 K  | Producto 01 · POS DIAN      |
+| `support-headphones.png`   | 680 × 453   | 40 K  | Producto 02 · Agentes de IA |
+| `team-group.png`           | 680 × 453   | 44 K  | Producto 03 · Ventas        |
+
+El marcado usa `<picture>` con `image/webp` y hace fallback al PNG. Si reemplazás un PNG,
+regenerá su WebP:
+
+```bash
+npm run images:webp
+```
+
+Requiere `cwebp` (`brew install webp`). Para reprocesar desde un original grande: redimensionar
+con `sips -Z <ancho>`, comprimir el PNG con `pngquant --quality 65-88` y recién ahí generar el
+WebP.
+
+## 🔍 SEO y rendimiento
+
+- Metadatos completos en `src/index.html`: título, descripción, `canonical`, Open Graph,
+  Twitter Card y `og:locale` es_CO.
+- Datos estructurados JSON-LD (`Organization`, `WebSite` e `ItemList` de productos).
+- `public/sitemap.xml` y `robots.txt` con referencia al sitemap.
+- Estructura semántica: un único `<h1>`, jerarquía de `<h2>`/`<h3>` por sección, landmarks
+  `header`/`main`/`footer` y enlace "Saltar al contenido".
+- Imágenes con `width`/`height` explícitos (evita CLS), `loading="lazy"` fuera del viewport y
+  `fetchpriority="high"` en el hero.
+- Google Tag Manager se carga en tiempo de inactividad (`requestIdleCallback`) para no competir
+  con el LCP.
+- Todos los componentes usan `ChangeDetectionStrategy.OnPush`.
 
 ## 📞 Contacto
 

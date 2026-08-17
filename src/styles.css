@@ -1,6 +1,52 @@
 @import 'tailwindcss';
-@plugin "daisyui";
+
+/* Design tokens — Siwina brand palette */
+@theme {
+  --font-sans:
+    'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --color-canvas: #fafafb;
+  --color-ink: #150e24;
+  --color-muted: #5b5568;
+  --color-line: #eceaf2;
+  --color-tint: #f4eefe;
+
+  --color-brand: #902bcc;
+  --color-brand-dark: #7a1fa3;
+  --color-brand-deep: #4c1d95;
+  --color-brand-night: #2a1155;
+
+  --color-accent: #e94fd1;
+  --color-lilac: #c4a6fa;
+  --color-lavender: #dccff5;
+  --color-mist: #c9bfe0;
+  --color-slate-soft: #8a8296;
+}
 
 html {
   scroll-behavior: smooth;
+  /* Sticky header offset for anchor navigation */
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

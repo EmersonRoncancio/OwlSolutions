@@ -1,2 +1,15 @@
-<nabvar></nabvar>
-<router-outlet></router-outlet>
+<a
+  href="#contenido"
+  class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:font-semibold focus:text-white"
+>
+  Saltar al contenido
+</a>
+
+<app-navbar />
+
+<main id="contenido">
+  <router-outlet />
+</main>
+
+<app-footer />
+<app-whatsapp />
