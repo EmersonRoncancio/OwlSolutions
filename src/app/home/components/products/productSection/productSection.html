@@ -10,7 +10,7 @@
         {{ product().eyebrow }}
       </p>
 
-      <h3 [class]="headingClass()" class="mb-4 text-[26px] font-extrabold tracking-tight sm:text-[30px]">
+      <h3 [class]="headingClass()" class="mb-4 text-[26px] font-extrabold tracking-tight text-balance sm:text-[30px]">
         {{ product().name }}
       </h3>
 
@@ -46,11 +46,11 @@
       </a>
     </div>
 
-    <div [class]="imageOrderClass()" class="relative flex min-h-[320px] items-center justify-center lg:min-h-[440px]">
+    <div [class]="imageOrderClass()" class="relative flex items-center justify-center lg:min-h-[440px]">
       <span
         aria-hidden="true"
         [class]="haloClass()"
-        class="absolute top-1/2 left-1/2 h-[260px] w-[260px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl lg:h-[340px] lg:w-[340px]"
+        class="absolute top-1/2 left-1/2 h-[260px] w-[260px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl sm:h-[340px] sm:w-[340px] lg:h-[340px] lg:w-[340px]"
       ></span>
       <span
         aria-hidden="true"
@@ -77,7 +77,7 @@
           [height]="product().image.height"
           loading="lazy"
           decoding="async"
-          class="relative block h-auto w-full max-w-[280px] drop-shadow-[0_24px_40px_rgba(21,14,36,0.3)] lg:max-w-[340px]"
+          class="relative block h-auto w-full max-w-[300px] drop-shadow-[0_24px_40px_rgba(21,14,36,0.3)] sm:max-w-[380px] md:max-w-[440px] lg:max-w-[340px]"
         />
       </picture>
     </div>
