@@ -1,0 +1,69 @@
+<app-breadcrumbs [items]="breadcrumbs()" />
+
+@if (post(); as article) {
+  <article>
+    <header class="mx-auto max-w-[820px] px-6 pt-8 pb-10 lg:px-8">
+      <p class="mb-3 text-[12.5px] font-bold tracking-[0.08em] text-brand uppercase">
+        {{ article.topic }}
+      </p>
+      <h1 class="mb-4 text-[30px] leading-[1.15] font-extrabold tracking-tight text-balance sm:text-[38px]">
+        {{ article.title }}
+      </h1>
+      <p class="mb-4 text-[17px] leading-relaxed text-muted">{{ article.excerpt }}</p>
+      <p class="text-[13px] text-slate-soft">
+        <time [attr.datetime]="article.published">{{ article.published | date: 'longDate' }}</time>
+        · {{ article.readingMinutes }} min de lectura
+      </p>
+    </header>
+
+    <div class="mx-auto max-w-[820px] px-6 pb-12 lg:px-8">
+      @for (section of article.sections; track section.heading) {
+        <section class="mb-10">
+          <h2 class="mb-4 text-[22px] font-extrabold tracking-tight text-balance sm:text-[26px]">
+            {{ section.heading }}
+          </h2>
+
+          @for (paragraph of section.paragraphs; track paragraph) {
+            <p class="mb-4 text-[16px] leading-[1.7] text-muted">{{ paragraph }}</p>
+          }
+
+          @if (section.bullets?.length) {
+            <ul class="mt-5 flex flex-col gap-3">
+              @for (bullet of section.bullets; track bullet) {
+                <li class="flex items-start gap-2.5">
+                  <span
+                    class="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-tint text-xs font-extrabold text-brand"
+                    aria-hidden="true"
+                    >✓</span
+                  >
+                  <span class="text-[15px] leading-relaxed text-ink">{{ bullet }}</span>
+                </li>
+              }
+            </ul>
+          }
+        </section>
+      }
+    </div>
+  </article>
+
+  <app-related-links [links]="article.related" heading="Sigue leyendo" />
+
+  <app-cta-band
+    heading="¿Quieres verlo aplicado a tu negocio?"
+    text="Agenda una consulta gratuita y revisamos tu operación con el equipo que construye el producto."
+    ctaLabel="Agendar consulta gratis"
+  />
+} @else {
+  <section class="mx-auto max-w-[820px] px-6 py-20 text-center lg:px-8">
+    <h1 class="mb-4 text-[30px] font-extrabold tracking-tight">Artículo no encontrado</h1>
+    <p class="mb-8 text-[16px] text-muted">
+      El artículo que buscas no existe o cambió de dirección.
+    </p>
+    <a
+      routerLink="/blog"
+      class="inline-block rounded-[10px] bg-brand px-6 py-3.5 text-[15px] font-bold text-white transition-colors hover:bg-brand-dark"
+    >
+      Ver todos los artículos
+    </a>
+  </section>
+}

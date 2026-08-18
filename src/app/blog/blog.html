@@ -1,0 +1,47 @@
+<app-breadcrumbs [items]="breadcrumbs" />
+
+<app-page-hero
+  eyebrow="Blog"
+  heading="Guías sobre punto de venta, facturación electrónica e IA"
+  lead="Explicaciones claras de los temas que aparecen cuando un negocio decide ordenar cómo vende, cómo factura y cómo atiende."
+  ctaLabel="Hablar con el equipo"
+  secondaryLabel="Ver los productos"
+  secondaryPath="/pos"
+/>
+
+<section aria-labelledby="articulos-title" class="bg-white py-14 lg:py-[68px]">
+  <div class="mx-auto max-w-[1180px] px-6 lg:px-8">
+    <h2
+      id="articulos-title"
+      class="mb-8 text-[26px] font-extrabold tracking-tight text-balance sm:text-[30px]"
+    >
+      Últimos artículos
+    </h2>
+
+    <ul class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+      @for (post of posts; track post.slug) {
+        <li class="flex flex-col rounded-xl border border-line bg-canvas p-6">
+          <p class="mb-2.5 text-[12px] font-bold tracking-[0.08em] text-brand uppercase">
+            {{ post.topic }}
+          </p>
+          <h3 class="mb-2 text-[17px] leading-snug font-bold text-balance">
+            <a [routerLink]="['/blog', post.slug]" class="text-ink hover:text-brand">
+              {{ post.title }}
+            </a>
+          </h3>
+          <p class="mb-4 grow text-[14px] leading-relaxed text-muted">{{ post.excerpt }}</p>
+          <p class="text-[13px] text-slate-soft">
+            <time [attr.datetime]="post.published">{{ post.published | date: 'longDate' }}</time>
+            · {{ post.readingMinutes }} min de lectura
+          </p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<app-cta-band
+  heading="¿Prefieres verlo aplicado a tu negocio?"
+  text="Agenda una consulta gratuita y revisamos tu operación con el equipo que construye el producto."
+  ctaLabel="Agendar consulta gratis"
+/>
