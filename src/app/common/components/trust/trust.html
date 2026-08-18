@@ -1,0 +1,16 @@
+<section aria-labelledby="clientes-title" class="bg-tint py-16 lg:py-[72px]">
+  <div class="mx-auto max-w-[1180px] px-6 text-center lg:px-8">
+    <h2 id="clientes-title" class="mb-2.5 text-[26px] font-extrabold tracking-tight text-balance text-brand sm:text-[30px]">
+      Ellos depositaron su confianza en nosotros
+    </h2>
+    <p class="mb-11 text-[15px] text-muted">
+      Colaboramos con empresas líderes para impulsar su transformación digital
+    </p>
+
+    <ul class="flex flex-wrap items-center justify-center gap-8 lg:gap-10">
+      @for (client of clients; track client) {
+        <li class="text-[15px] font-bold text-slate-soft">{{ client }}</li>
+      }
+    </ul>
+  </div>
+</section>
