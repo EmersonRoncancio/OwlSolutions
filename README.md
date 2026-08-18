@@ -132,7 +132,7 @@ alfa, ya redimensionados y comprimidos desde los originales del diseño:
 | `hero-composed-720.webp`   | 720 × 540   | 72 K  | Variante móvil del hero     |
 | `pos-barista.png`          | 680 × 580   | 67 K  | Producto 01 · POS DIAN      |
 | `support-headphones.png`   | 680 × 453   | 40 K  | Producto 02 · Agentes de IA |
-| `team-group.png`           | 680 × 453   | 44 K  | Producto 03 · Ventas        |
+| `team-group.png`           | 680 × 453   | 40 K  | Producto 03 · Ventas        |
 
 El marcado usa `<picture>` con `image/webp` y hace fallback al PNG. Si reemplazás un PNG,
 regenerá su WebP:

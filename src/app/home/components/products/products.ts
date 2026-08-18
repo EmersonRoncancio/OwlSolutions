@@ -81,7 +81,7 @@ export class Products {
       image: {
         png: '/images/team-group.png',
         webp: '/images/team-group.webp',
-        alt: 'Equipo comercial revisando su pipeline de ventas en la plataforma de Siwina',
+        alt: 'Equipo comercial revisando en laptop y celular el pipeline de ventas de Siwina',
         width: 680,
         height: 453,
       },
