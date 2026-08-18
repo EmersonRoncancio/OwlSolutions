@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && node tools/postbuild.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "images:webp": "for f in public/images/*.png; do cwebp -q 82 \"$f\" -o \"${f%.png}.webp\"; done"
+    "images:webp": "for f in public/images/*.png; do cwebp -q 82 \"$f\" -o \"${f%.png}.webp\"; done",
+    "postbuild:sitemap": "node tools/postbuild.mjs"
   },
   "prettier": {
     "printWidth": 100,
