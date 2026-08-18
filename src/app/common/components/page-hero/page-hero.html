@@ -1,0 +1,58 @@
+<section
+  class="relative overflow-hidden bg-[linear-gradient(160deg,#2A1155_0%,#4C1D95_48%,#902BCC_100%)]"
+>
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
+    <span
+      class="absolute top-[70px] right-[80px] hidden h-[120px] w-[120px] rounded-full border-2 border-dashed border-white/20 lg:block"
+    ></span>
+    <span
+      class="absolute -bottom-32 -left-24 h-[360px] w-[360px] rounded-full bg-[radial-gradient(circle,rgba(233,79,209,0.26)_0%,transparent_70%)] blur-[10px]"
+    ></span>
+  </div>
+
+  <div class="relative mx-auto max-w-[1180px] px-6 pt-12 pb-16 lg:px-8 lg:pt-16 lg:pb-20">
+    <p class="mb-4 text-[12.5px] font-bold tracking-[0.08em] text-lavender uppercase">
+      {{ eyebrow() }}
+    </p>
+
+    <h1
+      class="mb-5 max-w-[760px] text-[32px] leading-[1.12] font-extrabold tracking-tight text-balance text-white sm:text-[42px]"
+    >
+      {{ heading() }}
+    </h1>
+
+    <p class="mb-7 max-w-[640px] text-[16.5px] leading-relaxed text-lavender">{{ lead() }}</p>
+
+    @if (highlights().length) {
+      <ul class="mb-8 flex flex-wrap gap-2.5">
+        @for (highlight of highlights(); track highlight) {
+          <li
+            class="rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-[13px] font-semibold text-white"
+          >
+            {{ highlight }}
+          </li>
+        }
+      </ul>
+    }
+
+    <div class="flex flex-wrap items-center gap-3.5">
+      <a
+        [href]="ctaHref()"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block rounded-full bg-accent px-7 py-3.5 text-[15px] font-extrabold text-brand-night shadow-[0_14px_30px_-10px_rgba(233,79,209,0.6)] transition-transform hover:-translate-y-0.5"
+      >
+        {{ ctaLabel() }} →
+      </a>
+
+      @if (secondaryLabel() && secondaryPath()) {
+        <a
+          [routerLink]="secondaryPath()"
+          class="rounded-full border border-white/30 px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:border-white/60"
+        >
+          {{ secondaryLabel() }}
+        </a>
+      }
+    </div>
+  </div>
+</section>

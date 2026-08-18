@@ -1,0 +1,25 @@
+<section class="mx-auto max-w-[1180px] px-6 py-16 lg:px-8 lg:py-20">
+  <div class="rounded-[20px] bg-ink px-6 py-12 text-center sm:px-12 lg:py-14">
+    <h2 class="mb-3.5 text-[26px] font-extrabold tracking-tight text-balance text-white sm:text-[30px]">
+      {{ heading() }}
+    </h2>
+    <p class="mx-auto mb-8 max-w-[520px] text-base text-mist">{{ text() }}</p>
+
+    <div class="flex flex-wrap justify-center gap-3.5">
+      <a
+        [href]="whatsappUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-[10px] bg-brand px-6 py-3.5 text-[15px] font-bold text-white shadow-lg shadow-brand/40 transition-colors hover:bg-brand-dark"
+      >
+        {{ ctaLabel() }} →
+      </a>
+      <a
+        [href]="'mailto:' + contactEmail"
+        class="rounded-[10px] border border-white/15 px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:border-white/40"
+      >
+        {{ contactEmail }}
+      </a>
+    </div>
+  </div>
+</section>
