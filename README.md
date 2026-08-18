@@ -130,7 +130,7 @@ alfa, ya redimensionados y comprimidos desde los originales del diseño:
 | -------------------------- | ----------- | ----- | --------------------------- |
 | `hero-composed.png`        | 1120 × 840  | 140 K | Hero (LCP, con `preload`)   |
 | `hero-composed-720.webp`   | 720 × 540   | 72 K  | Variante móvil del hero     |
-| `pos-barista.png`          | 566 × 680   | 68 K  | Producto 01 · POS DIAN      |
+| `pos-barista.png`          | 680 × 580   | 67 K  | Producto 01 · POS DIAN      |
 | `support-headphones.png`   | 680 × 453   | 40 K  | Producto 02 · Agentes de IA |
 | `team-group.png`           | 680 × 453   | 44 K  | Producto 03 · Ventas        |
 

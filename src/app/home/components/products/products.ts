@@ -29,9 +29,9 @@ export class Products {
       image: {
         png: '/images/pos-barista.png',
         webp: '/images/pos-barista.webp',
-        alt: 'Barista facturando una venta desde el POS de Siwina',
-        width: 566,
-        height: 680,
+        alt: 'Barista facturando una venta desde el POS de Siwina en una tablet con datáfono',
+        width: 680,
+        height: 580,
       },
       theme: 'light',
       imageFirst: false,
