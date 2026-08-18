@@ -1,0 +1,36 @@
+<app-breadcrumbs [items]="breadcrumbs" />
+
+<app-page-hero
+  eyebrow="Ventas"
+  heading="Plataforma de ventas con agente de IA para calificar y dar seguimiento a leads"
+  lead="Centraliza WhatsApp, redes y correo en una sola bandeja, deja que un agente de IA califique lo que entra y gestiona tu pipeline sin que ninguna conversación quede sin respuesta."
+  [highlights]="heroHighlights"
+  ctaLabel="Conocer la plataforma"
+  secondaryLabel="Ver agentes de IA"
+  secondaryPath="/agentes-ia"
+/>
+
+<app-content-block heading="El problema no son los leads, es el seguimiento" [paragraphs]="intro" />
+
+<app-feature-grid
+  heading="Qué incluye la plataforma"
+  intro="De la primera respuesta al reporte de conversión por canal."
+  [features]="capabilities"
+  [tint]="true"
+/>
+
+<app-content-block
+  heading="Cómo funciona"
+  [paragraphs]="howItWorks"
+  [bullets]="problems"
+/>
+
+<app-faq [items]="faq" heading="Preguntas frecuentes sobre la plataforma de ventas" />
+
+<app-related-links [links]="related" />
+
+<app-cta-band
+  heading="¿Cuántos leads se te enfrían esperando respuesta?"
+  text="Agenda una consulta y revisamos por dónde entran tus oportunidades hoy y qué parte del seguimiento puede quedar automatizada."
+  ctaLabel="Agendar consulta gratis"
+/>

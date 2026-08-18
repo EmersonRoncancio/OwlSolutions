@@ -11,7 +11,7 @@
       </p>
 
       <h3 [class]="headingClass()" class="mb-4 text-[26px] font-extrabold tracking-tight text-balance sm:text-[30px]">
-        {{ product().name }}
+        <a [routerLink]="product().ctaHref" class="hover:underline">{{ product().name }}</a>
       </h3>
 
       <p [class]="bodyClass()" class="mb-6 text-base leading-[1.65]">
@@ -38,7 +38,7 @@
       </p>
 
       <a
-        [href]="product().ctaHref"
+        [routerLink]="product().ctaHref"
         [class]="eyebrowClass()"
         class="inline-block text-[15px] font-bold hover:underline"
       >

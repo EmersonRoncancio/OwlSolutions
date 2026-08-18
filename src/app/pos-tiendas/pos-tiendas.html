@@ -1,0 +1,30 @@
+<app-breadcrumbs [items]="breadcrumbs" />
+
+<app-page-hero
+  eyebrow="POS por tipo de negocio"
+  heading="Software POS para tiendas y minimercados en Colombia"
+  lead="Venta por código de barras, documento equivalente electrónico, inventario que se descuenta solo y arqueo de caja por turno — para cobrar rápido sin perder el control."
+  [highlights]="heroHighlights"
+  ctaLabel="Solicitar demo para mi tienda"
+  secondaryLabel="Ver el POS completo"
+  secondaryPath="/pos"
+/>
+
+<app-content-block heading="Cómo vende una tienda y qué exige eso del POS" [paragraphs]="intro" />
+
+<app-feature-grid
+  heading="Funciones para comercio de mostrador"
+  intro="Pensadas para muchas referencias, tiquetes pequeños y fila en la caja."
+  [features]="features"
+  [tint]="true"
+/>
+
+<app-faq [items]="faq" heading="Preguntas frecuentes sobre el POS para tiendas" />
+
+<app-related-links [links]="related" />
+
+<app-cta-band
+  heading="¿Quieres verlo con el catálogo de tu tienda?"
+  text="Agenda una demo y revisamos tu operación: referencias, medios de pago y cómo dejar el inventario al día."
+  ctaLabel="Solicitar demo"
+/>

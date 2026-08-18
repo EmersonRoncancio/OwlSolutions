@@ -1,0 +1,30 @@
+<app-breadcrumbs [items]="breadcrumbs" />
+
+<app-page-hero
+  eyebrow="POS por tipo de negocio"
+  heading="Software POS para restaurantes con facturación electrónica DIAN"
+  lead="Cuenta abierta por mesa, comandas que llegan solas a cocina, control de insumos y cobro con factura electrónica — el flujo real del servicio a la mesa, no el de un mostrador."
+  [highlights]="heroHighlights"
+  ctaLabel="Solicitar demo para mi restaurante"
+  secondaryLabel="Ver el POS completo"
+  secondaryPath="/pos"
+/>
+
+<app-content-block heading="Por qué un restaurante necesita otro tipo de POS" [paragraphs]="intro" />
+
+<app-feature-grid
+  heading="Funciones para servicio a la mesa"
+  intro="Lo que usa el mesero, la cocina y quien cierra la caja."
+  [features]="features"
+  [tint]="true"
+/>
+
+<app-faq [items]="faq" heading="Preguntas frecuentes sobre el POS para restaurantes" />
+
+<app-related-links [links]="related" />
+
+<app-cta-band
+  heading="¿Quieres verlo con la carta de tu restaurante?"
+  text="Agenda una demo y configuramos el flujo de mesas, comandas y cobro con tu operación real."
+  ctaLabel="Solicitar demo"
+/>

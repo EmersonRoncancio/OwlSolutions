@@ -90,11 +90,39 @@ Para construir el proyecto para producción:
 
 ```bash
 npm run build
-# o
-ng build
 ```
 
-Los archivos compilados se almacenarán en el directorio `dist/`.
+`npm run build` hace dos cosas:
+
+1. `ng build` — compila y **prerenderiza** cada ruta pública a HTML estático
+   (`outputMode: "static"`), por lo que cada URL entrega su propio `<title>`,
+   `description`, canonical, Open Graph y JSON-LD sin depender de JavaScript.
+2. `node tools/postbuild.mjs` — genera `sitemap.xml` a partir de las páginas
+   realmente prerenderizadas (excluyendo las que llevan `noindex`) y copia el
+   documento `/404` a `404.html`.
+
+Los archivos compilados quedan en `dist/Siwina/browser/`.
+
+> `ng build` a secas compila y prerenderiza, pero **no** regenera el sitemap.
+> Usa siempre `npm run build` para desplegar.
+
+### Contrato de despliegue
+
+- El host debe servir `/pos` (sin barra final) como **HTTP 200** desde
+  `pos/index.html`. El canonical de cada página usa esa forma.
+- Las variantes `http://`, `www.` y con barra final deben redirigir con **301**
+  a `https://siwina.com/...`.
+- `404.html` debe servirse para rutas desconocidas.
+
+## 🔎 SEO
+
+- Metadata por ruta: `src/app/common/seo/seo.ts` (title, description, canonical,
+  Open Graph, Twitter Card y JSON-LD por página).
+- Constantes de marca y URLs absolutas: `src/app/common/seo/site.config.ts`.
+- Rutas indexables: `src/app/app.routes.ts` (el sitemap se deriva de ahí).
+- Artículos del blog: agregar una entrada en `src/app/blog/data/posts.data.ts`
+  publica el artículo, lo enlaza desde `/blog`, lo prerenderiza y lo suma al
+  sitemap. No hay ningún otro archivo que tocar.
 
 ## 🧪 Testing
 

@@ -1,0 +1,42 @@
+<app-breadcrumbs [items]="breadcrumbs" />
+
+<app-page-hero
+  eyebrow="Contacto"
+  heading="Hablemos de tu operación"
+  lead="Escríbenos por el canal que prefieras. Respondemos en español y hablas directo con el equipo que construye el producto."
+  ctaLabel="Escribir por WhatsApp"
+  secondaryLabel="Conocer Siwina"
+  secondaryPath="/nosotros"
+/>
+
+<section aria-labelledby="canales-title" class="bg-white py-14 lg:py-[68px]">
+  <div class="mx-auto max-w-[1180px] px-6 lg:px-8">
+    <h2
+      id="canales-title"
+      class="mb-8 text-[26px] font-extrabold tracking-tight text-balance sm:text-[30px]"
+    >
+      Canales de contacto
+    </h2>
+
+    <ul class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      @for (channel of channels; track channel.label) {
+        <li class="rounded-xl border border-line bg-canvas p-6">
+          <h3 class="mb-1.5 text-[16px] font-bold text-ink">{{ channel.label }}</h3>
+          <a
+            [href]="channel.href"
+            [attr.target]="channel.external ? '_blank' : null"
+            [attr.rel]="channel.external ? 'noopener noreferrer' : null"
+            class="text-[15px] font-semibold text-brand hover:underline"
+          >
+            {{ channel.value }}
+          </a>
+          <p class="mt-2 text-[14px] leading-relaxed text-muted">{{ channel.description }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<app-content-block heading="Qué nos sirve saber antes de la demo" [paragraphs]="beforeDemo" [tint]="true" />
+
+<app-related-links [links]="related" />

@@ -56,8 +56,10 @@
       rel="stylesheet"
     />
 
-    <!-- LCP image: fetched as early as possible -->
+    <!-- LCP image: fetched as early as possible. Removed by the Seo service on
+         routes that do not render the home hero, so it never costs bandwidth there. -->
     <link
+      data-lcp-preload
       rel="preload"
       as="image"
       type="image/webp"
@@ -66,7 +68,7 @@
       imagesizes="(min-width: 1024px) 560px, 100vw"
     />
 
-    <!-- Structured data -->
+    <!-- Structured data: site-wide entities. Page-specific schema is injected per route. -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -75,64 +77,38 @@
             "@type": "Organization",
             "@id": "https://siwina.com/#organization",
             "name": "Siwina",
+            "legalName": "Siwina",
             "url": "https://siwina.com/",
             "email": "contacto@siwina.com",
-            "description": "Productos de software que resuelven problemas reales de negocio: facturación electrónica DIAN, atención con agentes de IA y ventas.",
+            "description": "Empresa colombiana de software: POS con facturación electrónica DIAN, agentes de IA para atención al cliente y plataforma de ventas con IA.",
             "areaServed": { "@type": "Country", "name": "Colombia" },
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "contactType": "sales",
-              "email": "contacto@siwina.com",
-              "availableLanguage": ["es"]
-            }
+            "sameAs": ["https://www.linkedin.com/company/siwina/about/"],
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "contactType": "sales",
+                "email": "contacto@siwina.com",
+                "url": "https://siwina.com/contacto",
+                "availableLanguage": ["es"],
+                "areaServed": "CO"
+              },
+              {
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "email": "contacto@siwina.com",
+                "availableLanguage": ["es"],
+                "areaServed": "CO"
+              }
+            ]
           },
           {
             "@type": "WebSite",
             "@id": "https://siwina.com/#website",
             "url": "https://siwina.com/",
             "name": "Siwina",
+            "alternateName": "Siwina | Software empresarial con IA",
             "inLanguage": "es-CO",
             "publisher": { "@id": "https://siwina.com/#organization" }
-          },
-          {
-            "@type": "ItemList",
-            "name": "Productos Siwina",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "item": {
-                  "@type": "SoftwareApplication",
-                  "name": "POS con facturación electrónica DIAN",
-                  "applicationCategory": "BusinessApplication",
-                  "operatingSystem": "Web",
-                  "description": "Punto de venta con factura electrónica validada ante la DIAN, control de inventario y reportes en tiempo real.",
-                  "provider": { "@id": "https://siwina.com/#organization" }
-                }
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "item": {
-                  "@type": "Service",
-                  "name": "Agentes de IA para soporte y atención",
-                  "serviceType": "Atención al cliente con inteligencia artificial",
-                  "description": "Agentes de IA que responden, agendan y resuelven por WhatsApp, chat web y llamadas 24/7.",
-                  "provider": { "@id": "https://siwina.com/#organization" }
-                }
-              },
-              {
-                "@type": "ListItem",
-                "position": 3,
-                "item": {
-                  "@type": "Service",
-                  "name": "Plataforma de ventas con agente de IA",
-                  "serviceType": "Automatización de ventas",
-                  "description": "Centraliza los canales de venta y califica leads con un agente de IA.",
-                  "provider": { "@id": "https://siwina.com/#organization" }
-                }
-              }
-            ]
           }
         ]
       }

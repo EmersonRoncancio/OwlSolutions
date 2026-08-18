@@ -24,8 +24,8 @@ export class Products {
       ],
       useCase:
         'ideal para tiendas, restaurantes y negocios con múltiples puntos de venta que necesitan cumplir con la DIAN sin complicarse.',
-      cta: 'Solicitar demo del POS',
-      ctaHref: '#contacto',
+      cta: 'Ver el POS con facturación DIAN',
+      ctaHref: '/pos',
       image: {
         png: '/images/pos-barista.png',
         webp: '/images/pos-barista.webp',
@@ -50,8 +50,8 @@ export class Products {
       ],
       useCase:
         'pensado para negocios que reciben muchas consultas repetitivas y quieren responder rápido sin crecer el equipo de soporte.',
-      cta: 'Conocer agentes de IA',
-      ctaHref: '#contacto',
+      cta: 'Ver los agentes de IA para atención',
+      ctaHref: '/agentes-ia',
       image: {
         png: '/images/support-headphones.png',
         webp: '/images/support-headphones.webp',
@@ -76,8 +76,8 @@ export class Products {
       ],
       useCase:
         'para equipos comerciales que pierden leads entre canales y quieren un agente que nunca deje una conversación sin respuesta.',
-      cta: 'Conocer la plataforma de ventas',
-      ctaHref: '#contacto',
+      cta: 'Ver la plataforma de ventas con IA',
+      ctaHref: '/plataforma-ventas',
       image: {
         png: '/images/team-group.png',
         webp: '/images/team-group.webp',

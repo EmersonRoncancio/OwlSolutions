@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 interface Differentiator {
   readonly title: string;
@@ -7,6 +8,7 @@ interface Differentiator {
 
 @Component({
   selector: 'app-about',
+  imports: [RouterLink],
   templateUrl: './about.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -1,0 +1,30 @@
+<app-breadcrumbs [items]="breadcrumbs" />
+
+<app-page-hero
+  eyebrow="Nosotros"
+  heading="Siwina, empresa colombiana de software para negocios"
+  lead="Construimos producto propio para resolver problemas reales de operación: facturación electrónica, atención al cliente y ventas — con soporte en español y directo con quien lo desarrolla."
+  [highlights]="heroHighlights"
+  ctaLabel="Hablar con el equipo"
+  secondaryLabel="Ver los productos"
+  secondaryPath="/pos"
+/>
+
+<app-content-block heading="Qué es Siwina" [paragraphs]="story" />
+
+<app-feature-grid
+  heading="Cómo trabajamos"
+  intro="Los criterios que definen qué construimos y cómo lo sostenemos."
+  [features]="principles"
+  [tint]="true"
+/>
+
+<app-trust />
+
+<app-related-links [links]="products" heading="Nuestros productos" />
+
+<app-cta-band
+  heading="¿Hablamos de tu operación?"
+  text="Agenda una consulta gratuita y revisamos cuál de nuestros productos encaja con lo que necesitas hoy."
+  ctaLabel="Agendar consulta gratis"
+/>
