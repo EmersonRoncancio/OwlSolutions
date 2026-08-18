@@ -5,16 +5,22 @@
     class="mx-auto flex max-w-[1180px] items-center justify-between gap-6 px-6 py-4 lg:px-8"
     aria-label="Navegación principal"
   >
-    <a href="/" class="text-[22px] font-extrabold tracking-tight text-brand" aria-label="Siwina, ir al inicio">
+    <a
+      routerLink="/"
+      class="text-[22px] font-extrabold tracking-tight text-brand"
+      aria-label="Siwina, ir al inicio"
+    >
       Siwina
     </a>
 
-    <ul class="hidden items-center gap-8 md:flex">
-      @for (link of links; track link.fragment) {
+    <ul class="hidden items-center gap-5 md:flex lg:gap-8">
+      @for (link of links; track link.path) {
         <li>
           <a
-            [href]="link.fragment"
-            class="text-[15px] font-medium text-ink transition-colors hover:text-brand"
+            [routerLink]="link.path"
+            routerLinkActive="text-brand"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="text-[14px] font-medium text-ink transition-colors hover:text-brand lg:text-[15px]"
           >
             {{ link.label }}
           </a>
@@ -23,8 +29,8 @@
     </ul>
 
     <a
-      href="#contacto"
-      class="hidden rounded-[10px] bg-brand px-6 py-3 text-[15px] font-bold text-white shadow-lg shadow-brand/30 transition-colors hover:bg-brand-dark md:inline-flex"
+      routerLink="/contacto"
+      class="hidden rounded-[10px] bg-brand px-5 py-3 text-[14px] font-bold text-white shadow-lg shadow-brand/30 transition-colors hover:bg-brand-dark md:inline-flex lg:px-6 lg:text-[15px]"
     >
       Iniciar Proyecto
     </a>
@@ -52,10 +58,10 @@
   @if (mobileMenuOpen()) {
     <div id="mobile-menu" class="border-t border-line bg-canvas md:hidden">
       <ul class="flex flex-col px-6 py-4">
-        @for (link of links; track link.fragment) {
+        @for (link of links; track link.path) {
           <li>
             <a
-              [href]="link.fragment"
+              [routerLink]="link.path"
               class="block py-3 text-base font-medium text-ink transition-colors hover:text-brand"
               (click)="closeMobileMenu()"
             >
@@ -65,7 +71,7 @@
         }
         <li class="pt-3">
           <a
-            href="#contacto"
+            routerLink="/contacto"
             class="inline-flex w-full items-center justify-center rounded-[10px] bg-brand px-6 py-3 font-bold text-white transition-colors hover:bg-brand-dark"
             (click)="closeMobileMenu()"
           >

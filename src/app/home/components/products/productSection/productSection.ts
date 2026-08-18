@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Product } from '../types/product.types';
 
 /**
@@ -7,6 +8,7 @@ import { Product } from '../types/product.types';
  */
 @Component({
   selector: 'app-product-section',
+  imports: [RouterLink],
   templateUrl: './productSection.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
