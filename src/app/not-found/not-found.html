@@ -1,0 +1,18 @@
+<section class="mx-auto max-w-[820px] px-6 py-20 text-center lg:px-8 lg:py-24">
+  <p class="mb-3 text-[13px] font-bold tracking-[0.08em] text-brand uppercase">Error 404</p>
+  <h1 class="mb-4 text-[32px] font-extrabold tracking-tight text-balance sm:text-[40px]">
+    Esta página no existe
+  </h1>
+  <p class="mx-auto mb-8 max-w-[520px] text-[16px] leading-relaxed text-muted">
+    La dirección que abriste no corresponde a ninguna página de Siwina. Puede que el enlace esté
+    mal escrito o que el contenido haya cambiado de sitio.
+  </p>
+  <a
+    routerLink="/"
+    class="inline-block rounded-[10px] bg-brand px-6 py-3.5 text-[15px] font-bold text-white transition-colors hover:bg-brand-dark"
+  >
+    Volver al inicio
+  </a>
+</section>
+
+<app-related-links [links]="links" heading="Quizá buscabas esto" />

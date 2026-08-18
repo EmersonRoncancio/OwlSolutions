@@ -1,0 +1,56 @@
+<app-breadcrumbs [items]="breadcrumbs" />
+
+<app-page-hero
+  eyebrow="Punto de venta"
+  heading="Software POS con facturación electrónica DIAN en Colombia"
+  lead="El punto de venta de Siwina cobra, factura ante la DIAN, descuenta inventario y te deja los reportes listos — en un solo flujo y sin cambiar de programa a mitad de una venta."
+  [highlights]="heroHighlights"
+  ctaLabel="Solicitar demo del POS"
+  secondaryLabel="Ver facturación electrónica"
+  secondaryPath="/facturacion-electronica"
+/>
+
+<app-content-block heading="Qué es el POS de Siwina" [paragraphs]="intro" />
+
+<app-feature-grid
+  heading="Todo lo que resuelve el POS"
+  intro="Los módulos que usan a diario tus cajeros, tu administrador y tu contador."
+  [features]="modules"
+  [tint]="true"
+/>
+
+<app-content-block
+  heading="Facturación electrónica y documento equivalente en el punto de venta"
+  [paragraphs]="invoicing"
+  [bullets]="invoicingBullets"
+/>
+
+<app-feature-grid
+  heading="Casos de uso"
+  intro="El mismo POS, configurado según cómo vende cada tipo de negocio."
+  [features]="useCases"
+  [tint]="true"
+/>
+
+<app-content-block
+  heading="Inventario, reportes y control de varias sedes"
+  [paragraphs]="inventory"
+/>
+
+<app-feature-grid
+  heading="Cómo es la implementación"
+  intro="La implementación estándar toma menos de dos semanas."
+  [features]="implementation"
+  [numbered]="true"
+  [tint]="true"
+/>
+
+<app-faq [items]="faq" heading="Preguntas frecuentes sobre el software POS" />
+
+<app-related-links [links]="related" />
+
+<app-cta-band
+  heading="¿Quieres ver el POS funcionando con tu operación?"
+  text="Agenda una demo y te mostramos el flujo completo de venta, facturación DIAN e inventario con el caso de tu negocio."
+  ctaLabel="Solicitar demo del POS"
+/>

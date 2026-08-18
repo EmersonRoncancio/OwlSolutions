@@ -1,0 +1,44 @@
+<app-breadcrumbs [items]="breadcrumbs" />
+
+<app-page-hero
+  eyebrow="Facturación electrónica"
+  heading="Facturación electrónica DIAN para negocios en Colombia"
+  lead="Emite factura electrónica de venta, documento equivalente y notas crédito desde el mismo sistema en el que registras la venta — sin digitar dos veces ni depender de un proveedor externo."
+  [highlights]="heroHighlights"
+  ctaLabel="Hablar con el equipo"
+  secondaryLabel="Ver el software POS"
+  secondaryPath="/pos"
+/>
+
+<app-content-block heading="Qué es la facturación electrónica" [paragraphs]="intro" />
+
+<app-feature-grid
+  heading="Los documentos del sistema de facturación"
+  intro="Qué emite cada uno y cuándo se usa."
+  [features]="documents"
+  [tint]="true"
+/>
+
+<app-feature-grid
+  heading="Cómo funciona el proceso"
+  intro="Del momento del cobro al reporte que revisa tu contador."
+  [features]="flow"
+  [numbered]="true"
+/>
+
+<app-content-block
+  heading="Cómo lo resuelve Siwina"
+  [paragraphs]="howSiwina"
+  [bullets]="benefits"
+  [tint]="true"
+/>
+
+<app-faq [items]="faq" heading="Preguntas frecuentes sobre facturación electrónica" />
+
+<app-related-links [links]="related" />
+
+<app-cta-band
+  heading="¿Quieres facturar y vender en el mismo flujo?"
+  text="Agenda una consulta y revisamos cómo emites hoy tus documentos y qué te falta para dejarlo integrado a tu punto de venta."
+  ctaLabel="Agendar consulta gratis"
+/>

@@ -1,0 +1,43 @@
+<app-breadcrumbs [items]="breadcrumbs" />
+
+<app-page-hero
+  eyebrow="Atención al cliente"
+  heading="Agentes de IA para atención al cliente por WhatsApp, chat y voz"
+  lead="Agentes de inteligencia artificial entrenados con la información de tu negocio, que responden y resuelven 24/7 y escalan a una persona cuando la conversación lo necesita."
+  [highlights]="heroHighlights"
+  ctaLabel="Conocer los agentes de IA"
+  secondaryLabel="Ver plataforma de ventas"
+  secondaryPath="/plataforma-ventas"
+/>
+
+<app-content-block heading="Qué es un agente de IA" [paragraphs]="intro" />
+
+<app-feature-grid
+  heading="Canales que atiende"
+  intro="Donde ya te escriben tus clientes, sin pedirles que cambien de app."
+  [features]="channels"
+  [tint]="true"
+/>
+
+<app-feature-grid
+  heading="Qué hace el agente"
+  intro="Capacidades que cambian la carga diaria de tu equipo de soporte."
+  [features]="capabilities"
+/>
+
+<app-content-block
+  heading="Cuándo tiene sentido un agente de IA"
+  [paragraphs]="implementation"
+  [bullets]="useCases"
+  [tint]="true"
+/>
+
+<app-faq [items]="faq" heading="Preguntas frecuentes sobre agentes de IA" />
+
+<app-related-links [links]="related" />
+
+<app-cta-band
+  heading="¿Cuántas consultas repetitivas atiende tu equipo cada día?"
+  text="Agenda una consulta y revisamos qué parte de esa carga puede resolver un agente de IA en tu operación."
+  ctaLabel="Agendar consulta gratis"
+/>
