@@ -158,6 +158,12 @@
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <!-- email_off: Cloudflare's Email Obfuscation rewrites the rendered mailto: links
+         and then injects email-decode.min.js into the critical request chain. Opting the
+         app out drops that request. Angular strips comments from component templates, so
+         the marker has to live here, around the host element. -->
+    <!--email_off-->
     <app-root></app-root>
+    <!--email_on-->
   </body>
 </html>
