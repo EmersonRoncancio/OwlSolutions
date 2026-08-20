@@ -48,12 +48,15 @@
       href="https://res.cloudinary.com/daezwxzg1/image/upload/v1772413443/siwina_bpkoji.webp"
     />
 
-    <!-- Fonts: preconnect + swap so text paints immediately -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts: self-hosted so no third-party origin sits on the critical path.
+         The latin subset carries every visible glyph, so it is preloaded; latin-ext
+         is declared in styles.css and only fetched when a page actually needs it. -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/plus-jakarta-sans-latin.woff2"
+      crossorigin
     />
 
     <!-- LCP image: fetched as early as possible. Removed by the Seo service on
