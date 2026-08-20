@@ -29,6 +29,7 @@ export class Products {
       image: {
         png: '/images/pos-barista.png',
         webp: '/images/pos-barista.webp',
+        webpSmall: '/images/pos-barista-340.webp',
         alt: 'Barista facturando una venta desde el POS de Siwina en una tablet con datáfono',
         width: 680,
         height: 580,
@@ -55,6 +56,7 @@ export class Products {
       image: {
         png: '/images/support-headphones.png',
         webp: '/images/support-headphones.webp',
+        webpSmall: '/images/support-headphones-340.webp',
         alt: 'Agente de soporte con diadema atendiendo clientes con ayuda de IA',
         width: 680,
         height: 453,
@@ -81,6 +83,7 @@ export class Products {
       image: {
         png: '/images/team-group.png',
         webp: '/images/team-group.webp',
+        webpSmall: '/images/team-group-340.webp',
         alt: 'Equipo comercial revisando en laptop y celular el pipeline de ventas de Siwina',
         width: 680,
         height: 453,
