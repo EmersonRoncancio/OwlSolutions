@@ -77,6 +77,15 @@ export class ProductSection {
     this.product().theme === 'dark' ? 'border-lilac/40' : 'border-brand/40',
   );
 
+  /**
+   * The mockup never renders wider than 440px, so a 680w original was up to 4x the
+   * pixels desktop actually paints. Two candidates cover 1x desktop and hi-dpi.
+   */
+  protected readonly imageSrcset = computed(() => {
+    const image = this.product().image;
+    return `${image.webpSmall} 340w, ${image.webp} 680w`;
+  });
+
   protected readonly imageOrderClass = computed(() =>
     this.product().imageFirst ? 'lg:order-first' : 'lg:order-last',
   );

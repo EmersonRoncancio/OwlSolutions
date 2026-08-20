@@ -7,7 +7,7 @@
     "build": "ng build && node tools/postbuild.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "images:webp": "for f in public/images/*.png; do cwebp -q 82 \"$f\" -o \"${f%.png}.webp\"; done",
+    "images:responsive": "bash tools/build-images.sh",
     "postbuild:sitemap": "node tools/postbuild.mjs"
   },
   "prettier": {

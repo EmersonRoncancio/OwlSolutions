@@ -85,8 +85,12 @@
       <picture>
         <source
           type="image/webp"
-          srcset="/images/hero-composed-720.webp 720w, /images/hero-composed.webp 1120w"
-          sizes="(min-width: 1024px) 560px, 100vw"
+          srcset="
+            /images/hero-composed-560.webp  560w,
+            /images/hero-composed-720.webp  720w,
+            /images/hero-composed.webp     1120w
+          "
+          sizes="(min-width: 1024px) 560px, calc(100vw - 48px)"
         />
         <img
           src="/images/hero-composed.png"

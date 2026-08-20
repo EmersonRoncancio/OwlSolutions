@@ -48,12 +48,15 @@
       href="https://res.cloudinary.com/daezwxzg1/image/upload/v1772413443/siwina_bpkoji.webp"
     />
 
-    <!-- Fonts: preconnect + swap so text paints immediately -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts: self-hosted so no third-party origin sits on the critical path.
+         The latin subset carries every visible glyph, so it is preloaded; latin-ext
+         is declared in styles.css and only fetched when a page actually needs it. -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/plus-jakarta-sans-latin.woff2"
+      crossorigin
     />
 
     <!-- LCP image: fetched as early as possible. Removed by the Seo service on
@@ -63,9 +66,10 @@
       rel="preload"
       as="image"
       type="image/webp"
-      href="/images/hero-composed.webp"
-      imagesrcset="/images/hero-composed-720.webp 720w, /images/hero-composed.webp 1120w"
-      imagesizes="(min-width: 1024px) 560px, 100vw"
+      fetchpriority="high"
+      href="/images/hero-composed-720.webp"
+      imagesrcset="/images/hero-composed-560.webp 560w, /images/hero-composed-720.webp 720w, /images/hero-composed.webp 1120w"
+      imagesizes="(min-width: 1024px) 560px, calc(100vw - 48px)"
     />
 
     <!-- Structured data: site-wide entities. Page-specific schema is injected per route. -->
@@ -154,6 +158,12 @@
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <!-- email_off: Cloudflare's Email Obfuscation rewrites the rendered mailto: links
+         and then injects email-decode.min.js into the critical request chain. Opting the
+         app out drops that request. Angular strips comments from component templates, so
+         the marker has to live here, around the host element. -->
+    <!--email_off-->
     <app-root></app-root>
+    <!--email_on-->
   </body>
 </html>

@@ -10,7 +10,10 @@
         {{ product().eyebrow }}
       </p>
 
-      <h3 [class]="headingClass()" class="mb-4 text-[26px] font-extrabold tracking-tight text-balance sm:text-[30px]">
+      <h3
+        [class]="headingClass()"
+        class="mb-4 text-[26px] font-extrabold tracking-tight text-balance sm:text-[30px]"
+      >
         <a [routerLink]="product().ctaHref" class="hover:underline">{{ product().name }}</a>
       </h3>
 
@@ -46,7 +49,10 @@
       </a>
     </div>
 
-    <div [class]="imageOrderClass()" class="relative flex items-center justify-center lg:min-h-[440px]">
+    <div
+      [class]="imageOrderClass()"
+      class="relative flex items-center justify-center lg:min-h-[440px]"
+    >
       <span
         aria-hidden="true"
         [class]="haloClass()"
@@ -69,7 +75,11 @@
       ></span>
 
       <picture>
-        <source [srcset]="product().image.webp" type="image/webp" />
+        <source
+          [srcset]="imageSrcset()"
+          sizes="(min-width: 1024px) 340px, (min-width: 768px) 440px, (min-width: 640px) 380px, 300px"
+          type="image/webp"
+        />
         <img
           [src]="product().image.png"
           [alt]="product().image.alt"

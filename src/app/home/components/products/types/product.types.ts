@@ -2,7 +2,10 @@ export type ProductTheme = 'light' | 'dark' | 'tint';
 
 export interface ProductImage {
   readonly png: string;
+  /** 680w webp — the widest candidate, used by hi-dpi and tablet layouts. */
   readonly webp: string;
+  /** 340w webp — matches the desktop render width at 1x. */
+  readonly webpSmall: string;
   readonly alt: string;
   readonly width: number;
   readonly height: number;
