@@ -1,0 +1,39 @@
+# Cache + security policy in the Cloudflare Pages / Netlify `_headers` format.
+#
+# NOTE: production is served by Vercel (verified via `x-vercel-cache` on www.siwina.com),
+# and Vercel ignores this file — `vercel.json` is the one that actually takes effect.
+# This file is kept in sync for the Cloudflare Pages deployment that also builds this repo.
+#
+# Cloudflare then proxies the domain, and its "Browser Cache TTL" setting overrides the
+# origin's Cache-Control unless it is set to "Respect Existing Headers". Without that,
+# everything is capped at 4 hours regardless of what is declared here or in vercel.json.
+#
+# Rule order matters: Cloudflare Pages applies every matching rule and lets the LAST
+# one win for a repeated header. The catch-all therefore only carries security headers,
+# and the asset rules below own Cache-Control outright.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# Angular fingerprints its own JS/CSS output, so those bytes can never go stale.
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/media/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Copied verbatim from `public/`, so the names are stable rather than hashed:
+# long TTL, but still revalidating.
+/fonts/*
+  Cache-Control: public, max-age=31536000
+  Access-Control-Allow-Origin: *
+
+/images/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+/favicon.ico
+  Cache-Control: public, max-age=2592000
