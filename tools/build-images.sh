@@ -38,10 +38,10 @@ avif() { # <src.png> <out.avif> <width>
 # 720w is deliberately absent: that file predates this script and is better optimized
 # than a `cwebp -q 82` pass (70.0 KiB committed vs 79.8 KiB re-encoded).
 echo 'Hero — WebP candidates:'
-for w in 560 640; do webp public/images/hero-composed.png "public/images/hero-composed-$w.webp" "$w"; done
+for w in 560; do webp public/images/hero-composed.png "public/images/hero-composed-$w.webp" "$w"; done
 
 echo 'Hero — AVIF candidates (LCP resource):'
-for w in 560 640 720 1120; do avif public/images/hero-composed.png "public/images/hero-composed-$w.avif" "$w"; done
+for w in 560 720 1120; do avif public/images/hero-composed.png "public/images/hero-composed-$w.avif" "$w"; done
 
 echo 'Products — WebP candidates:'
 for name in pos-barista support-headphones team-group; do
