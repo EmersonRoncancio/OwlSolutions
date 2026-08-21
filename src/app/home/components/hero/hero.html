@@ -12,16 +12,24 @@
     <span
       class="absolute top-[120px] right-[60px] hidden h-[110px] w-[110px] rounded-full border-2 border-dashed border-white/20 lg:block"
     ></span>
-    <span class="absolute bottom-[180px] left-16 hidden h-3.5 w-3.5 rounded-full bg-accent/70 lg:block"></span>
-    <span class="absolute bottom-[260px] left-[120px] hidden h-2 w-2 rounded-full bg-white/50 lg:block"></span>
+    <span
+      class="absolute bottom-[180px] left-16 hidden h-3.5 w-3.5 rounded-full bg-accent/70 lg:block"
+    ></span>
+    <span
+      class="absolute bottom-[260px] left-[120px] hidden h-2 w-2 rounded-full bg-white/50 lg:block"
+    ></span>
     <span
       class="absolute -bottom-40 -left-32 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(233,79,209,0.28)_0%,transparent_70%)] blur-[10px]"
     ></span>
     <span
       class="absolute bottom-10 left-[200px] hidden h-[150px] w-[150px] rounded-full border-2 border-dashed border-white/15 lg:block"
     ></span>
-    <span class="absolute top-[70%] left-[38%] hidden h-1.5 w-1.5 rounded-full bg-white/35 lg:block"></span>
-    <span class="absolute top-[64%] left-[44%] hidden h-2.5 w-2.5 rounded-full bg-white/20 lg:block"></span>
+    <span
+      class="absolute top-[70%] left-[38%] hidden h-1.5 w-1.5 rounded-full bg-white/35 lg:block"
+    ></span>
+    <span
+      class="absolute top-[64%] left-[44%] hidden h-2.5 w-2.5 rounded-full bg-white/20 lg:block"
+    ></span>
     <span
       class="absolute bottom-[120px] left-[340px] hidden text-[26px] font-extrabold tracking-[0.1em] text-white/15 lg:block"
       >+</span
@@ -84,9 +92,20 @@
       ></span>
       <picture>
         <source
+          type="image/avif"
+          srcset="
+            /images/hero-composed-560.avif   560w,
+            /images/hero-composed-640.avif   640w,
+            /images/hero-composed-720.avif   720w,
+            /images/hero-composed-1120.avif 1120w
+          "
+          sizes="(min-width: 1024px) 560px, calc(100vw - 48px)"
+        />
+        <source
           type="image/webp"
           srcset="
             /images/hero-composed-560.webp  560w,
+            /images/hero-composed-640.webp  640w,
             /images/hero-composed-720.webp  720w,
             /images/hero-composed.webp     1120w
           "
