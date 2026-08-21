@@ -14,7 +14,7 @@
 import { readFile, readdir, writeFile, copyFile, stat } from 'node:fs/promises';
 import { join, relative, sep } from 'node:path';
 
-const SITE_URL = 'https://siwina.com';
+const SITE_URL = 'https://www.siwina.com';
 const OUT_DIR = join(process.cwd(), 'dist', 'Siwina', 'browser');
 const PUBLIC_SITEMAP = join(process.cwd(), 'public', 'sitemap.xml');
 

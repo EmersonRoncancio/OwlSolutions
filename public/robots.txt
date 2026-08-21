@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://siwina.com/sitemap.xml
+Sitemap: https://www.siwina.com/sitemap.xml

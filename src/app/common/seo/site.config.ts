@@ -1,5 +1,12 @@
-/** Single source of truth for absolute URLs and brand identity used across the site. */
-export const SITE_URL = 'https://siwina.com';
+/**
+ * Single source of truth for absolute URLs and brand identity used across the site.
+ *
+ * The host is `www`: that is what the origin serves, and the apex 307-redirects to it.
+ * Pointing canonicals at the apex made every page declare itself non-canonical against
+ * a URL that redirects, which crawlers report as "canonicalised" and therefore
+ * non-indexable.
+ */
+export const SITE_URL = 'https://www.siwina.com';
 export const SITE_NAME = 'Siwina';
 export const SITE_LOCALE = 'es_CO';
 export const SITE_LANG = 'es-CO';

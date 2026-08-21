@@ -20,9 +20,9 @@ function pageGraph(): Record<string, unknown>[] {
 
 describe('absoluteUrl', () => {
   it('keeps the trailing slash only on the home page', () => {
-    expect(absoluteUrl('/')).toBe('https://siwina.com/');
-    expect(absoluteUrl('/pos')).toBe('https://siwina.com/pos');
-    expect(absoluteUrl('/pos/')).toBe('https://siwina.com/pos');
+    expect(absoluteUrl('/')).toBe('https://www.siwina.com/');
+    expect(absoluteUrl('/pos')).toBe('https://www.siwina.com/pos');
+    expect(absoluteUrl('/pos/')).toBe('https://www.siwina.com/pos');
   });
 });
 
@@ -39,9 +39,9 @@ describe('Seo', () => {
   it('sets canonical and og:url to the absolute route URL', () => {
     seo.apply({ path: '/pos', title: 'POS', description: 'Punto de venta' });
 
-    expect(canonical()).toBe('https://siwina.com/pos');
+    expect(canonical()).toBe('https://www.siwina.com/pos');
     expect(head().querySelector('meta[property="og:url"]')?.getAttribute('content')).toBe(
-      'https://siwina.com/pos',
+      'https://www.siwina.com/pos',
     );
   });
 
