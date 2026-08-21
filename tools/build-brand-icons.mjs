@@ -9,8 +9,13 @@
  * Outputs:
  *   public/favicon.ico          16/32/48, the "S" mark  (48 is Google's minimum)
  *   public/apple-touch-icon.png 180x180, the "S" mark with extra padding for iOS
- *   public/images/logo-siwina.png  the full wordmark, cropped to the graphic as Google
- *                                  asks for Organization.logo
+ *   public/images/logo-siwina.webp the full wordmark, cropped to the graphic as Google
+ *                                  asks for Organization.logo. WebP because Google reads
+ *                                  it and supports the format, and it is a third of PNG.
+ *
+ * The favicon stays .ico and the touch icon stays .png on purpose: ICO/PNG are the
+ * formats every browser and crawler accepts for icons, while WebP favicon support is
+ * uneven — not a place to spend bytes for a 3 KiB file.
  *
  * Requires Pillow: python3 -m pip install --user Pillow
  * The master lives in tools/brand/ rather than public/ so it is versioned but never
@@ -69,11 +74,11 @@ square(mark, 180, pad=0.20).save('public/apple-touch-icon.png', optimize=True)
 
 logo = wordmark.copy()
 logo.thumbnail((640, 640), Image.LANCZOS)
-logo.save('public/images/logo-siwina.png', optimize=True)
+logo.save('public/images/logo-siwina.webp', quality=88, method=6)
 
 print(f'  favicon.ico            16/32/48 from a {mark.size[0]}x{mark.size[1]} mark')
 print(f'  apple-touch-icon.png   180x180')
-print(f'  images/logo-siwina.png {logo.size[0]}x{logo.size[1]}')
+print(f'  images/logo-siwina.webp {logo.size[0]}x{logo.size[1]}')
 `;
 
 const run = spawnSync('python3', ['-c', script, SOURCE], { stdio: 'inherit' });
