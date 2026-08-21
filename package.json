@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "images:responsive": "bash tools/build-images.sh",
-    "postbuild:sitemap": "node tools/postbuild.mjs"
+    "postbuild:sitemap": "node tools/postbuild.mjs",
+    "icons:brand": "node tools/build-brand-icons.mjs"
   },
   "prettier": {
     "printWidth": 100,
