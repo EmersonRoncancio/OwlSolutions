@@ -44,10 +44,18 @@
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
-    <!-- Fonts are self-hosted and declared in styles.css with font-display: swap, so
-         text paints with the fallback immediately. They are deliberately NOT preloaded:
-         a High-priority 27 KiB request ahead of the first paint costs more than the
-         swap it would avoid. -->
+    <!-- The latin subset is preloaded on purpose. Without it the face arrives after the
+         first paint, and the swap reflows the hero copy: PageSpeed attributes 0.095 of
+         CLS to the glow span behind the hero image, naming this woff2 as the cause.
+         Preloaded, it lands at ~376ms — well before the paint — so the swap never shifts
+         anything. -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/plus-jakarta-sans-latin.woff2"
+      crossorigin
+    />
 
     <!-- LCP image: fetched as early as possible. Removed by the Seo service on
          routes that do not render the home hero, so it never costs bandwidth there. -->
