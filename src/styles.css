@@ -6,12 +6,18 @@
 @source './**/*.{html,ts}';
 
 /* Self-hosted Plus Jakarta Sans (variable, 200-800). Keeping it same-origin removes
-   fonts.googleapis.com and fonts.gstatic.com from the critical request chain. */
+   fonts.googleapis.com and fonts.gstatic.com from the critical request chain.
+   font-display: optional rather than swap, paired with the preload in index.html:
+   `swap` repaints the page in the real face after first paint, and that reflow moves the
+   hero — PageSpeed attributes 0.095 of CLS to the glow span behind the hero image and
+   names this woff2 as the cause. `optional` uses the face only if it is ready inside the
+   block period, so there is no second layout pass and no shift. The preload makes it
+   ready in practice; a visitor on a slow link sees the fallback for that load. */
 @font-face {
   font-family: 'Plus Jakarta Sans';
   font-style: normal;
   font-weight: 200 800;
-  font-display: swap;
+  font-display: optional;
   src: url('/fonts/plus-jakarta-sans-latin.woff2') format('woff2');
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
@@ -22,7 +28,7 @@
   font-family: 'Plus Jakarta Sans';
   font-style: normal;
   font-weight: 200 800;
-  font-display: swap;
+  font-display: optional;
   src: url('/fonts/plus-jakarta-sans-latin-ext.woff2') format('woff2');
   unicode-range:
     U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
