@@ -7,8 +7,8 @@
  * of being one-off binaries nobody can reproduce.
  *
  * Outputs:
- *   public/favicon.ico          16/32/48, the "S" mark  (48 is Google's minimum)
- *   public/apple-touch-icon.png 180x180, the "S" mark with extra padding for iOS
+ *   public/favicon.ico          16/32/48, the wordmark  (48 is Google's minimum)
+ *   public/apple-touch-icon.png 180x180, the wordmark with extra padding for iOS
  *   public/images/logo-siwina.webp the full wordmark, cropped to the graphic as Google
  *                                  asks for Organization.logo. WebP because Google reads
  *                                  it and supports the format, and it is a third of PNG.
@@ -42,24 +42,10 @@ def trim(im):
 
 wordmark = trim(src)
 
-def columns_with_ink(im):
-    px, (w, h) = im.load(), im.size
-    return [any(min(px[x, y]) < 240 for y in range(h)) for x in range(w)]
-
-def first_glyph(im):
-    """The leading letter, used as the square mark: a wordmark is illegible at 16px."""
-    cols, groups, start = columns_with_ink(im), [], None
-    for x, inked in enumerate(cols):
-        if inked and start is None:
-            start = x
-        elif not inked and start is not None:
-            groups.append((start, x)); start = None
-    if start is not None:
-        groups.append((start, len(cols)))
-    x0, x1 = groups[0]
-    return trim(im.crop((x0, 0, x1, im.size[1])))
-
-def square(mark, side, pad=0.16):
+def square(mark, side, pad=0.02):
+    """The wordmark is 4.7:1, so a square canvas wastes most of the room. Padding stays
+    minimal to keep the letters as large as the box allows — at 16px it is a smudge no
+    matter what, at 32px (what a hi-dpi tab actually renders) it reads."""
     inner = int(side * (1 - 2 * pad))
     w, h = mark.size
     scale = inner / max(w, h)
@@ -68,15 +54,15 @@ def square(mark, side, pad=0.16):
     canvas.paste(m, ((side - m.size[0]) // 2, (side - m.size[1]) // 2))
     return canvas
 
-mark = first_glyph(wordmark)
-square(mark, 256).save('public/favicon.ico', sizes=[(16, 16), (32, 32), (48, 48)])
-square(mark, 180, pad=0.20).save('public/apple-touch-icon.png', optimize=True)
+square(wordmark, 256).save('public/favicon.ico', sizes=[(16, 16), (32, 32), (48, 48)])
+# iOS rounds the corners itself, so the wordmark needs room not to be clipped.
+square(wordmark, 180, pad=0.12).save('public/apple-touch-icon.png', optimize=True)
 
 logo = wordmark.copy()
 logo.thumbnail((640, 640), Image.LANCZOS)
 logo.save('public/images/logo-siwina.webp', quality=88, method=6)
 
-print(f'  favicon.ico            16/32/48 from a {mark.size[0]}x{mark.size[1]} mark')
+print(f'  favicon.ico            16/32/48 from the {wordmark.size[0]}x{wordmark.size[1]} wordmark')
 print(f'  apple-touch-icon.png   180x180')
 print(f'  images/logo-siwina.webp {logo.size[0]}x{logo.size[1]}')
 `;
