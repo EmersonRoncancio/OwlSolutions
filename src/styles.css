@@ -1,4 +1,9 @@
-@import 'tailwindcss';
+@import 'tailwindcss' source(none);
+
+/* Tailwind v4 detects source files from the project root by default, which pulls in
+   the agent skill docs committed under .agents/ and generates utilities for classes
+   that only ever appear in their code examples. Scan the application source only. */
+@source './**/*.{html,ts}';
 
 /* Self-hosted Plus Jakarta Sans (variable, 200-800). Keeping it same-origin removes
    fonts.googleapis.com and fonts.gstatic.com from the critical request chain. */
