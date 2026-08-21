@@ -44,5 +44,11 @@
 /images/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=2592000
 
+# Same trap as /images/*: the name never changes when the bytes do, and a 30-day
+# max-age pinned Angular's default favicon at the CDN even after the real one shipped.
+# Google reads /favicon.ico at the root by convention, so it cannot be fingerprinted.
 /favicon.ico
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=86400, stale-while-revalidate=2592000
+
+/apple-touch-icon.png
+  Cache-Control: public, max-age=86400, stale-while-revalidate=2592000
