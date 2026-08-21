@@ -78,12 +78,14 @@ export class ProductSection {
   );
 
   /**
-   * The mockup never renders wider than 440px, so a 680w original was up to 4x the
-   * pixels desktop actually paints. Two candidates cover 1x desktop and hi-dpi.
+   * The mockup renders at 340px on desktop and 300px on mobile, so a lone 680w
+   * original was up to 4x the pixels a 1x viewport paints. Three candidates cover
+   * 1x desktop (340w), the ~525px a 300px mobile render needs at 1.75x DPR (560w),
+   * and 2x hi-dpi (680w).
    */
   protected readonly imageSrcset = computed(() => {
     const image = this.product().image;
-    return `${image.webpSmall} 340w, ${image.webp} 680w`;
+    return `${image.webpSmall} 340w, ${image.webpMedium} 560w, ${image.webp} 680w`;
   });
 
   protected readonly imageOrderClass = computed(() =>

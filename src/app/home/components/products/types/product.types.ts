@@ -6,6 +6,8 @@ export interface ProductImage {
   readonly webp: string;
   /** 340w webp — matches the desktop render width at 1x. */
   readonly webpSmall: string;
+  /** 560w webp — covers the 300px mobile render at ~1.75x-2x DPR. */
+  readonly webpMedium: string;
   readonly alt: string;
   readonly width: number;
   readonly height: number;
