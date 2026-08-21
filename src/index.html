@@ -42,22 +42,12 @@
       content="https://res.cloudinary.com/daezwxzg1/image/upload/v1772583219/VistapreviaPhotoshop_Imagenn_v5ycrg.webp"
     />
 
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="https://res.cloudinary.com/daezwxzg1/image/upload/v1772413443/siwina_bpkoji.webp"
-    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
-    <!-- Fonts: self-hosted so no third-party origin sits on the critical path.
-         The latin subset carries every visible glyph, so it is preloaded; latin-ext
-         is declared in styles.css and only fetched when a page actually needs it. -->
-    <link
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      href="/fonts/plus-jakarta-sans-latin.woff2"
-      crossorigin
-    />
+    <!-- Fonts are self-hosted and declared in styles.css with font-display: swap, so
+         text paints with the fallback immediately. They are deliberately NOT preloaded:
+         a High-priority 27 KiB request ahead of the first paint costs more than the
+         swap it would avoid. -->
 
     <!-- LCP image: fetched as early as possible. Removed by the Seo service on
          routes that do not render the home hero, so it never costs bandwidth there. -->
