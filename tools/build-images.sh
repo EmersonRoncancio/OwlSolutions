@@ -19,8 +19,8 @@
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
-WEBP_QUALITY=82
-AVIF_QUALITY=68   # verified against the hero's small bubble text; no visible artifacts
+WEBP_QUALITY=74
+AVIF_QUALITY=62   # verified against the hero's small bubble text; no visible artifacts
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
