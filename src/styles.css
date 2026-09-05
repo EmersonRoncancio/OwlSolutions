@@ -77,12 +77,32 @@
 :root {
   /* Aire de la pagina: separa las laminas entre si y del borde de la ventana. */
   --sheet-gap: 1rem;
+
+  /* Anchura a la que la pagina deja de crecer. No es la columna de texto (esa sigue
+     siendo el max-w-[1180px] de cada seccion): es el marco exterior, y por eso el
+     numero es el ancho de ventana donde queremos que se pare, no el del contenido. */
+  --shell-max: 1440px;
 }
 
 @media (min-width: 1024px) {
   :root {
     --sheet-gap: 2rem;
   }
+}
+
+/* Las laminas se estiran con la ventana hasta 1440px y ahi se paran, en vez de seguir
+   creciendo sin limite en monitores grandes. El tope entra solo, sin media query: por
+   debajo de esa anchura el max-width nunca llega a aplicarse y no cambia nada.
+
+   El pie entra en la regla aunque no lleve lamina: sin el, su envoltorio interior se
+   centraria respecto a la ventana y no respecto al marco, quedando desalineado con las
+   secciones justo a partir del tope.
+
+   El navbar queda deliberadamente fuera: sigue ocupando el ancho de la ventana. */
+main,
+footer {
+  max-width: var(--shell-max);
+  margin-inline: auto;
 }
 
 /* Angular monta el componente de ruta como hermano del <router-outlet>, asi que el
