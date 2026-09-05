@@ -31,7 +31,7 @@ export class Nosotros {
   ];
 
   protected readonly story: readonly string[] = [
-    'Siwina es una empresa colombiana de software. Construimos producto propio para resolver tres problemas concretos del día a día de un negocio: cobrar y facturar, atender a los clientes y hacer seguimiento a las ventas.',
+    'Siwina es una empresa colombiana de software. Construimos producto propio para resolver problemas concretos del día a día de un negocio: cobrar y facturar, atender a los clientes y hacer seguimiento a las ventas.',
     'La diferencia entre una empresa de proyectos y una de producto está en qué pasa después de la entrega. Un proyecto termina; un producto se mantiene, se ajusta cuando cambia la norma y mejora con lo que aprendemos de cada implementación. Ese es el modelo que elegimos.',
     'Trabajamos para el mercado colombiano, que tiene reglas propias: la facturación electrónica ante la DIAN no es un detalle de configuración, es el centro de cómo opera un comercio aquí. Construir para ese contexto exige conocerlo, no adaptarlo después.',
   ];

@@ -1,94 +1,80 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+
+import { AgentArtifact } from '../artifacts/agent-artifact';
+import { PipelineArtifact } from '../artifacts/pipeline-artifact';
+import { PosArtifact } from '../artifacts/pos-artifact';
 import { Product } from '../types/product.types';
 
+import { Reveal } from '../../../../common/directives/reveal';
+
 /**
- * Presentational block for a single product. Every theme variant is written as a
- * full literal class string so Tailwind can detect it at build time.
+ * Lamina de un producto. Cada una ocupa un peldaño distinto de la escalera —claro,
+ * morado vivo, morado profundo— asi que la serie se lee como progresion y no como
+ * repeticion. Cada variante se escribe como cadena literal completa para que Tailwind
+ * la detecte en el build.
  */
 @Component({
   selector: 'app-product-section',
-  imports: [RouterLink],
+  imports: [RouterLink, PosArtifact, AgentArtifact, PipelineArtifact, Reveal],
   templateUrl: './productSection.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductSection {
   readonly product = input.required<Product>();
 
-  protected readonly sectionClass = computed(() => {
-    switch (this.product().theme) {
-      case 'dark':
-        return 'bg-ink';
-      case 'tint':
-        return 'bg-tint';
+  /** Posicion en el listado, desde 1. */
+  readonly index = input.required<number>();
+
+  protected readonly indexLabel = computed(() => String(this.index()).padStart(2, '0'));
+
+  /** El primero es claro; los otros dos suben por la escalera. */
+  protected readonly isLight = computed(() => this.index() === 1);
+
+  protected readonly sheetClass = computed(() => {
+    switch (this.index()) {
+      case 2:
+        return 'bg-brand';
+      case 3:
+        return 'bg-deep';
       default:
-        return 'bg-white';
+        return 'bg-paper';
     }
   });
 
-  protected readonly headingClass = computed(() =>
-    this.product().theme === 'dark' ? 'text-white' : 'text-ink',
+  protected readonly headingClass = computed(() => (this.isLight() ? 'text-ink' : 'text-white'));
+
+  protected readonly bodyClass = computed(() => (this.isLight() ? 'text-muted' : 'text-pale'));
+
+  protected readonly eyebrowClass = computed(() => (this.isLight() ? 'text-brand' : 'text-white'));
+
+  protected readonly badgeClass = computed(() =>
+    this.isLight() ? 'bg-tint text-brand' : 'bg-white/15 text-white',
   );
 
-  protected readonly bodyClass = computed(() =>
-    this.product().theme === 'dark' ? 'text-mist' : 'text-muted',
+  protected readonly linkClass = computed(() =>
+    this.isLight()
+      ? 'bg-brand text-white hover:bg-vivid'
+      : 'bg-white text-ink hover:bg-pale',
   );
 
-  protected readonly eyebrowClass = computed(() =>
-    this.product().theme === 'dark' ? 'text-lilac' : 'text-brand',
+  /** Numeral gigante de fondo: ordena la serie sin ocupar espacio de lectura. */
+  protected readonly ghostClass = computed(() =>
+    this.isLight() ? 'text-brand/[0.08]' : 'text-white/[0.08]',
   );
 
-  /** Background used by the check bullets and the use-case callout. */
-  protected readonly softClass = computed(() => {
-    switch (this.product().theme) {
-      case 'dark':
-        return 'bg-white/10';
-      case 'tint':
-        return 'bg-white';
-      default:
-        return 'bg-tint';
-    }
-  });
-
-  protected readonly checkClass = computed(() =>
-    this.product().theme === 'dark' ? 'bg-white/10 text-lilac' : 'bg-tint text-brand',
-  );
-
-  protected readonly ringClass = computed(() =>
-    this.product().theme === 'dark' ? 'border-white/15' : 'border-line',
-  );
-
-  protected readonly haloClass = computed(() => {
-    switch (this.product().theme) {
-      case 'dark':
-        return 'bg-white/5';
-      case 'tint':
-        return 'bg-white/70';
-      default:
-        return 'bg-tint';
-    }
-  });
-
-  protected readonly dotClass = computed(() =>
-    this.product().theme === 'dark' ? 'bg-lilac/50' : 'bg-brand/50',
-  );
-
-  protected readonly ringDotClass = computed(() =>
-    this.product().theme === 'dark' ? 'border-lilac/40' : 'border-brand/40',
-  );
+  protected readonly dotsClass = computed(() => (this.isLight() ? 'dots-ink' : ''));
 
   /**
-   * The mockup renders at 340px on desktop and 300px on mobile, so a lone 680w
-   * original was up to 4x the pixels a 1x viewport paints. Three candidates cover
-   * 1x desktop (340w), the ~525px a 300px mobile render needs at 1.75x DPR (560w),
-   * and 2x hi-dpi (680w).
+   * Tres candidatas para la foto: 340w cubre el render de escritorio a 1x, 560w el
+   * de movil a densidades altas y 680w el 2x de escritorio.
    */
-  protected readonly imageSrcset = computed(() => {
-    const image = this.product().image;
-    return `${image.webpSmall} 340w, ${image.webpMedium} 560w, ${image.webp} 680w`;
+  protected readonly photoSrcset = computed(() => {
+    const foto = this.product().photo;
+    return `${foto.webpSmall} 340w, ${foto.webpMedium} 560w, ${foto.webp} 680w`;
   });
 
-  protected readonly imageOrderClass = computed(() =>
-    this.product().imageFirst ? 'lg:order-first' : 'lg:order-last',
+  protected readonly artifactOrderClass = computed(() =>
+    this.index() % 2 === 0 ? 'lg:order-first' : 'lg:order-last',
   );
 }

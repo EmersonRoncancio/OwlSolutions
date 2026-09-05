@@ -1,26 +1,26 @@
-<header
-  class="sticky top-0 z-50 border-b border-line bg-canvas/90 backdrop-blur-md supports-[backdrop-filter]:bg-canvas/80"
->
+<!-- Arriba del todo flota como una lamina mas; al bajar se pega y ocupa todo el ancho. -->
+<header class="navbar sticky top-0 z-50" data-stuck="false">
   <nav
-    class="mx-auto flex max-w-[1180px] items-center justify-between gap-6 px-6 py-4 lg:px-8"
+    class="navbar__bar floating-bar bg-white/95 px-6 backdrop-blur-lg lg:px-10"
     aria-label="Navegación principal"
   >
+    <div class="mx-auto flex w-full max-w-[1180px] items-center justify-between gap-6">
     <a
       routerLink="/"
-      class="text-[22px] font-extrabold tracking-tight text-brand"
+      class="inline-flex items-baseline pl-1 text-[21px] leading-none font-extrabold tracking-[-0.04em] text-ink"
       aria-label="Siwina, ir al inicio"
     >
-      Siwina
+      Siwina<span class="text-brand" aria-hidden="true">.</span>
     </a>
 
-    <ul class="hidden items-center gap-5 md:flex lg:gap-8">
+    <ul class="hidden items-center gap-7 md:flex">
       @for (link of links; track link.path) {
         <li>
           <a
             [routerLink]="link.path"
-            routerLinkActive="text-brand"
+            routerLinkActive="text-ink after:scale-x-100"
             [routerLinkActiveOptions]="{ exact: true }"
-            class="text-[14px] font-medium text-ink transition-colors hover:text-brand lg:text-[15px]"
+            class="relative inline-block py-1 text-[14.5px] font-medium text-muted transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-[2px] after:origin-left after:scale-x-0 after:rounded-full after:bg-brand after:transition-transform after:duration-300 hover:text-ink hover:after:scale-x-100"
           >
             {{ link.label }}
           </a>
@@ -30,55 +30,57 @@
 
     <a
       routerLink="/contacto"
-      class="hidden rounded-[10px] bg-brand px-5 py-3 text-[14px] font-bold text-white shadow-lg shadow-brand/30 transition-colors hover:bg-brand-dark md:inline-flex lg:px-6 lg:text-[15px]"
+      class="group hidden items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-[14px] font-bold text-white transition-colors hover:bg-vivid md:inline-flex"
     >
-      Iniciar Proyecto
+      Hablemos
+      <span class="arrow-shift" aria-hidden="true">→</span>
     </a>
 
     <button
       type="button"
-      class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-ink md:hidden"
+      class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-tint text-ink transition-colors hover:bg-pale md:hidden"
       [attr.aria-expanded]="mobileMenuOpen()"
       aria-controls="mobile-menu"
       [attr.aria-label]="mobileMenuOpen() ? 'Cerrar menú' : 'Abrir menú'"
       (click)="toggleMobileMenu()"
     >
       @if (mobileMenuOpen()) {
-        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12" />
         </svg>
       } @else {
-        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-width="1.75" d="M4 7h16M4 12h16M4 17h16" />
         </svg>
       }
     </button>
+    </div>
   </nav>
 
   @if (mobileMenuOpen()) {
-    <div id="mobile-menu" class="border-t border-line bg-canvas md:hidden">
-      <ul class="flex flex-col px-6 py-4">
+    <div id="mobile-menu" class="navbar__menu mx-auto mt-2 max-w-[1180px] rounded-[28px] bg-white p-2 md:hidden">
+      <ul class="flex flex-col">
         @for (link of links; track link.path) {
           <li>
             <a
               [routerLink]="link.path"
-              class="block py-3 text-base font-medium text-ink transition-colors hover:text-brand"
+              class="flex items-center justify-between rounded-2xl px-4 py-3.5 text-[16px] font-bold text-ink transition-colors hover:bg-tint"
               (click)="closeMobileMenu()"
             >
               {{ link.label }}
+              <span class="text-brand" aria-hidden="true">→</span>
             </a>
           </li>
         }
-        <li class="pt-3">
-          <a
-            routerLink="/contacto"
-            class="inline-flex w-full items-center justify-center rounded-[10px] bg-brand px-6 py-3 font-bold text-white transition-colors hover:bg-brand-dark"
-            (click)="closeMobileMenu()"
-          >
-            Iniciar Proyecto
-          </a>
-        </li>
       </ul>
+      <a
+        routerLink="/contacto"
+        class="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-brand px-6 py-3.5 font-bold text-white"
+        (click)="closeMobileMenu()"
+      >
+        Hablemos
+        <span aria-hidden="true">→</span>
+      </a>
     </div>
   }
 </header>

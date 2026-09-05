@@ -1,39 +1,47 @@
+<!-- Cierre en el peldaño mas vivo de la escalera. -->
 <section
   id="contacto"
   aria-labelledby="contacto-title"
-  class="mx-auto max-w-[1180px] px-6 pt-20 pb-14 lg:px-8 lg:pt-[88px]"
+  class="sheet rounded-t-none bg-[linear-gradient(120deg,#6a17b5_0%,#902bcc_55%,#a340df_100%)]"
 >
-  <div class="rounded-[20px] bg-ink px-6 py-14 text-center sm:px-12 lg:py-16">
-    <h2 id="contacto-title" class="mb-3.5 text-[26px] font-extrabold tracking-tight text-balance text-white sm:text-[32px]">
-      ¿Listo para transformar tu negocio?
-    </h2>
-    <p class="mx-auto mb-8 max-w-[520px] text-base text-mist">
-      Agenda una consulta gratuita con nuestro equipo y descubre cuál de nuestros productos encaja
-      con tu operación.
-    </p>
+  <div class="dots absolute inset-0 opacity-60" aria-hidden="true"></div>
 
-    <div class="flex flex-wrap justify-center gap-3.5">
-      <a
-        href="https://wa.me/573007810339"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="rounded-[10px] bg-brand px-6 py-3.5 text-[15px] font-bold text-white shadow-lg shadow-brand/40 transition-colors hover:bg-brand-dark"
-      >
-        Agendar Consulta Gratis →
-      </a>
-      <a
-        href="mailto:contacto@siwina.com"
-        class="rounded-[10px] border border-white/15 px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:border-white/40"
-      >
-        contacto&#64;siwina.com
-      </a>
+  <div class="relative mx-auto max-w-[1180px] px-6 py-16 lg:px-10 lg:py-24">
+    <div>
+      <div appReveal>
+        <p class="mb-6 font-mono text-[10.5px] font-medium tracking-[0.18em] text-pale uppercase">
+          Hablemos
+        </p>
+        <h2
+          id="contacto-title"
+          class="max-w-[620px] text-[30px] leading-[1.06] font-extrabold tracking-[-0.035em] text-white sm:text-[42px]"
+        >
+          ¿Listo para transformar tu negocio?
+        </h2>
+        <p class="mt-6 max-w-[460px] text-[16.5px] leading-relaxed text-pale">
+          Cuéntanos cómo vendes hoy y te mostramos cuál de nuestros productos encaja con tu
+          operación.
+        </p>
+      </div>
+
+      <div appReveal="120" class="mt-10 flex flex-wrap items-center gap-3">
+        <a
+          href="https://wa.me/573007810339"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-4 text-[15px] font-bold text-ink transition-colors hover:bg-pale"
+        >
+          Escríbenos por WhatsApp
+          <span class="arrow-shift" aria-hidden="true">→</span>
+        </a>
+        <a
+          routerLink="/contacto"
+          class="group inline-flex items-center gap-2 rounded-full bg-white/15 px-6 py-4 text-[15px] font-semibold text-white transition-colors hover:bg-white/25"
+        >
+          Ver todos los canales
+          <span class="arrow-shift" aria-hidden="true">→</span>
+        </a>
+      </div>
     </div>
-
-    <p class="mt-6 text-sm text-mist">
-      También puedes
-      <a routerLink="/contacto" class="font-semibold text-white underline hover:text-lilac">
-        ver todos los canales de contacto</a
-      >.
-    </p>
   </div>
 </section>

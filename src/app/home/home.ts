@@ -23,7 +23,6 @@ export class Home {
       title: 'Siwina | Software POS, facturación DIAN y agentes de IA',
       description:
         'Empresa colombiana de software: POS con facturación electrónica DIAN, agentes de IA para atención y plataforma de ventas. Implementación en 2 semanas.',
-      heroPreload: true,
       schema: [
         {
           '@type': 'ItemList',

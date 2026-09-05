@@ -1,12 +1,15 @@
-export type ProductTheme = 'light' | 'dark' | 'tint';
+/**
+ * Interfaz que ilustra cada producto. En lugar de una foto, cada bloque dibuja la
+ * pantalla que el negocio va a usar: el cierre de caja, el hilo del agente y el
+ * pipeline. El discriminante elige cuál se arma.
+ */
+export type ProductArtifact = 'pos' | 'agent' | 'pipeline';
 
-export interface ProductImage {
+/** Recorte con fondo transparente de una persona usando el producto. */
+export interface ProductPhoto {
   readonly png: string;
-  /** 680w webp — the widest candidate, used by hi-dpi and tablet layouts. */
   readonly webp: string;
-  /** 340w webp — matches the desktop render width at 1x. */
   readonly webpSmall: string;
-  /** 560w webp — covers the 300px mobile render at ~1.75x-2x DPR. */
   readonly webpMedium: string;
   readonly alt: string;
   readonly width: number;
@@ -15,15 +18,16 @@ export interface ProductImage {
 
 export interface Product {
   readonly id: string;
+  /** Categoría corta; el índice (01, 02, 03) lo pone el listado. */
   readonly eyebrow: string;
   readonly name: string;
   readonly description: string;
+  /** Etiquetas cortas de venta, para leer el producto de un vistazo. */
+  readonly badges: readonly string[];
   readonly features: readonly string[];
   readonly useCase: string;
   readonly cta: string;
   readonly ctaHref: string;
-  readonly image: ProductImage;
-  readonly theme: ProductTheme;
-  /** Places the mockup on the left column on desktop. */
-  readonly imageFirst: boolean;
+  readonly artifact: ProductArtifact;
+  readonly photo: ProductPhoto;
 }

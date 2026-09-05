@@ -1,0 +1,14 @@
+<div class="marquee border-t border-white/10 bg-white/[0.05] py-3" aria-hidden="true">
+  @for (track of [1, 2]; track track) {
+    <div class="marquee__track">
+      @for (item of items; track item) {
+        <span
+          class="px-5 font-mono text-[11px] font-medium tracking-[0.18em] whitespace-nowrap text-soft uppercase"
+        >
+          {{ item }}
+        </span>
+        <span class="text-white/25" aria-hidden="true">•</span>
+      }
+    </div>
+  }
+</div>

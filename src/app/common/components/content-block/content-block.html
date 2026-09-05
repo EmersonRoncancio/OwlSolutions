@@ -1,28 +1,43 @@
-<section [class]="tint() ? 'bg-tint' : 'bg-white'" class="py-14 lg:py-[68px]">
-  <div class="mx-auto max-w-[820px] px-6 lg:px-8">
-    <h2 class="mb-5 text-[26px] font-extrabold tracking-tight text-balance sm:text-[30px]">
-      {{ heading() }}
-    </h2>
+<section [class]="tint() ? 'bg-tint' : 'bg-paper'" class="sheet">
+  <div class="mx-auto max-w-[1180px] px-6 py-14 lg:px-10 lg:py-20">
+    <div appReveal class="grid gap-9 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+      <h2
+        class="text-[26px] leading-[1.08] font-extrabold tracking-[-0.035em] text-ink sm:text-[34px]"
+      >
+        {{ heading() }}
+      </h2>
 
-    @for (paragraph of paragraphs(); track paragraph) {
-      <p class="mb-4 text-[16px] leading-[1.7] text-muted">{{ paragraph }}</p>
-    }
-
-    @if (bullets().length) {
-      <ul class="mt-6 flex flex-col gap-3">
-        @for (bullet of bullets(); track bullet) {
-          <li class="flex items-start gap-2.5">
-            <span
-              class="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-tint text-xs font-extrabold text-brand"
-              aria-hidden="true"
-              >✓</span
-            >
-            <span class="text-[15px] leading-relaxed text-ink">{{ bullet }}</span>
-          </li>
+      <div>
+        @for (paragraph of paragraphs(); track paragraph) {
+          <p class="mb-5 text-[16.5px] leading-[1.75] text-muted last:mb-0">{{ paragraph }}</p>
         }
-      </ul>
-    }
 
-    <ng-content />
+        @if (bullets().length) {
+          <ul class="mt-9 grid gap-2.5 sm:grid-cols-2">
+            @for (bullet of bullets(); track bullet) {
+              <li class="flex items-start gap-2.5 rounded-2xl bg-white px-4 py-3.5">
+                <span
+                  class="mt-px flex h-4.5 w-4.5 flex-none items-center justify-center rounded-full bg-brand text-white"
+                  aria-hidden="true"
+                >
+                  <svg viewBox="0 0 12 12" fill="none" class="h-2.5 w-2.5">
+                    <path
+                      d="M2.5 6.2 4.8 8.6 9.5 3.6"
+                      stroke="currentColor"
+                      stroke-width="2.4"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span class="text-[14.5px] leading-snug text-ink">{{ bullet }}</span>
+              </li>
+            }
+          </ul>
+        }
+
+        <ng-content />
+      </div>
+    </div>
   </div>
 </section>

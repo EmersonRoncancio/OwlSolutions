@@ -35,42 +35,464 @@
     U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
     U+A720-A7FF;
 }
-
-/* Design tokens — Siwina brand palette */
+/* Design tokens — Siwina brand palette.
+   Escalera de morados: un solo tono recorrido de punta a punta. La jerarquia sale del
+   valor, no de un segundo color — por eso hay once pasos y ningun gris neutro. El
+   blanco aparece solo en el texto y en las pantallas de producto. */
 @theme {
   --font-sans:
     'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
-  --color-canvas: #fafafb;
-  --color-ink: #150e24;
-  --color-muted: #5b5568;
-  --color-line: #eceaf2;
-  --color-tint: #f4eefe;
+  /* Monoespaciada de sistema para etiquetas, indices y metadatos. Se resuelve con
+     fuentes ya instaladas, asi que no agrega una sola peticion al arranque. */
+  --font-mono:
+    ui-monospace, 'SFMono-Regular', 'SF Mono', 'JetBrains Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
 
+  /* --- Peldaños oscuros --- */
+  /* Fondo de la pagina: los paneles flotan sobre el. */
+  --color-ground: #150329;
+  --color-deep: #23063f;
+  --color-mid: #3c0b6b;
+
+  /* --- El morado de marca y su vecindario --- */
   --color-brand: #902bcc;
-  --color-brand-dark: #7a1fa3;
-  --color-brand-deep: #4c1d95;
-  --color-brand-night: #2a1155;
+  /* Hover del morado solido. */
+  --color-vivid: #a340df;
 
-  --color-accent: #e94fd1;
-  --color-lilac: #c4a6fa;
-  --color-lavender: #dccff5;
-  --color-mist: #c9bfe0;
-  --color-slate-soft: #6e667a;
+  /* --- Peldaños claros --- */
+  /* Texto secundario sobre oscuro. */
+  --color-soft: #c99cec;
+  --color-pale: #e6d3f7;
+  /* Panel claro. */
+  --color-paper: #f7f1fd;
+  --color-tint: #ede0fa;
+  --color-line: #e0cff2;
+
+  /* --- Texto sobre panel claro --- */
+  --color-ink: #1b0733;
+  --color-muted: #5b4570;
+}
+
+:root {
+  /* Aire de la pagina: separa las laminas entre si y del borde de la ventana. */
+  --sheet-gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --sheet-gap: 2rem;
+  }
+}
+
+/* Angular monta el componente de ruta como hermano del <router-outlet>, asi que el
+   contenedor real de las secciones no es <main> sino ese componente. El gap tiene que
+   vivir ahi: puesto en <main> solo separa el outlet del componente y las secciones
+   quedan pegadas entre si. */
+main > :not(router-outlet),
+app-products > section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sheet-gap);
 }
 
 html {
   scroll-behavior: smooth;
   /* Sticky header offset for anchor navigation */
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 6rem;
+
+  /* Habilita animar hacia `auto`. Sin esto, el unico modo de desplegar el acordeon
+     con suavidad seria medir la altura del contenido con JavaScript y escribirla en
+     pixeles — que se rompe en cuanto el texto se reajusta. */
+  interpolate-size: allow-keywords;
 }
 
 body {
   margin: 0;
-  background-color: var(--color-canvas);
+  background-color: var(--color-ground);
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-soft);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------------------------------------------------------------------------
+   Sistema visual "Escalera".
+   1. La pagina es un fondo morado profundo y todo lo demas son laminas redondeadas
+      que flotan encima, cada una en un peldaño distinto de la misma escalera.
+   2. La jerarquia la da el valor del morado, no un color de apoyo.
+   3. La tipografia va en caja baja: el peso y el tamaño hacen el trabajo, sin
+      recurrir a versales.
+   --------------------------------------------------------------------------- */
+/* Una variable solo se puede animar si esta registrada con su tipo: sin este bloque
+   el resplandor de las baldosas apareceria de golpe en vez de fundirse. Va fuera de
+   @layer porque @property no pertenece a ninguna capa. */
+@property --tile-glow-alpha {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0;
+}
+
+@layer components {
+  /* Lamina: la unidad de composicion de la pagina. */
+  .sheet {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border-radius: 28px;
+  }
+
+  @media (min-width: 1024px) {
+    .sheet {
+      border-radius: 40px;
+    }
+  }
+
+  /* Trama de puntos para las laminas oscuras. */
+  .dots {
+    background-image: radial-gradient(
+      circle at center,
+      var(--dot-ink, rgba(255, 255, 255, 0.14)) 1.2px,
+      transparent 1.2px
+    );
+    background-size: 18px 18px;
+  }
+
+  .dots-ink {
+    --dot-ink: rgba(144, 43, 204, 0.2);
+  }
+
+  /* Pantalla de producto: las interfaces de Siwina, blancas, flotando sobre el
+     morado. Son el unico blanco solido de la pagina. */
+  .panel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow:
+      0 2px 4px rgba(21, 3, 41, 0.08),
+      0 34px 64px -30px rgba(21, 3, 41, 0.65);
+  }
+
+  /* Barra de navegacion, dos estados. Arriba del todo flota con el mismo marco que
+     las laminas; al bajar se pega al borde, pierde el radio y ocupa el ancho completo. */
+  .navbar {
+    /* El padding VERTICAL no cambia nunca entre estados, y es deliberado. El header
+       es sticky, o sea que ocupa sitio en el flujo: si su alto cambiara al pegarse,
+       el documento se acortaria, el contenido subiria y el navegador corregiria
+       scrollY para mantenerlo quieto. Esa correccion vuelve a cruzar el umbral en
+       sentido contrario, el estado se invierte, y la barra se queda encogiendose y
+       estirandose sola. Todo el recorrido vertical se hace con translate en la
+       barra, que no participa en el flujo. Los laterales si pueden animarse: el
+       ancho no realimenta al scroll. */
+    padding: var(--sheet-gap) var(--sheet-gap) 0;
+  }
+
+  /* La transicion se arma un fotograma despues de fijar el estado inicial. Sin esta
+     puerta, cargar la pagina ya scrolleada reproduce la animacion entera al entrar:
+     el primer pintado sale flotante y el estado real llega despues. */
+  .navbar[data-animatable='true'] {
+    transition: padding-inline 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .navbar__bar {
+    /* Mitad del alto de la barra: 60px en movil, 65px en escritorio. En reposo se ve
+       igual que una pildora, pero al animar hacia 0 todo el recorrido es visible
+       — con 9999px el navegador recorta el radio a esa misma mitad y la transicion
+       parecia un salto seco al final. Si cambia el alto de la barra, cambia aqui. */
+    border-radius: 30px;
+    padding-block: 0.75rem;
+    translate: 0 0;
+  }
+
+  .navbar[data-animatable='true'] .navbar__bar {
+    transition:
+      border-radius 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      translate 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media (min-width: 1024px) {
+    .navbar__bar {
+      border-radius: 33px;
+    }
+  }
+
+  .navbar[data-stuck='true'] {
+    padding-inline: 0;
+  }
+
+  /* Sube a ras del borde con translate en vez de con el padding del header: el
+     resultado visual es el mismo y el alto del documento no se entera.
+     El padding-block de la barra tampoco se toca ya — comprimirlo 8px la encogia,
+     y eso era la otra mitad del acoplamiento. El radio, el ancho completo y la
+     sombra siguen marcando el cambio de estado de sobra. */
+  .navbar[data-stuck='true'] .navbar__bar {
+    border-radius: 0;
+    translate: 0 calc(-1 * var(--sheet-gap));
+  }
+
+  /* Pegada, la sombra se acorta: ya no levita, se apoya en el contenido que pasa. */
+  .navbar[data-stuck='true'] .floating-bar {
+    box-shadow:
+      0 1px 2px rgba(21, 3, 41, 0.12),
+      0 10px 22px -14px rgba(21, 3, 41, 0.55);
+  }
+
+  /* El menu movil acompaña a la barra en el mismo desplazamiento y pierde el radio.
+     Conserva su margen de 8px: anularlo volveria a cambiar el alto del header
+     mientras el menu esta abierto, que es el acoplamiento que acabamos de quitar. */
+  .navbar[data-stuck='true'] .navbar__menu {
+    translate: 0 calc(-1 * var(--sheet-gap));
+    border-radius: 0;
+  }
+
+  .navbar[data-animatable='true'] .navbar__menu {
+    transition:
+      translate 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+      border-radius 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Barra flotante. Se apoya en la misma logica que .panel, pero con una sombra mas
+     corta: es una barra que levita, no una tarjeta apoyada. */
+  .floating-bar {
+    box-shadow:
+      0 1px 2px rgba(21, 3, 41, 0.12),
+      0 14px 30px -12px rgba(21, 3, 41, 0.5);
+  }
+
+  /* Las pantallas de producto se muestran a escala reducida: son un apoyo de la
+     foto, no el protagonista. */
+  .screen-scale {
+    zoom: 0.72;
+  }
+
+  /* Despliegue del acordeon.
+     `details` abre y cierra de golpe: mientras esta cerrado su contenido no se
+     renderiza, asi que desde el marcado no hay nada que animar. ::details-content da
+     acceso a ese contenido como caja propia, y `content-visibility` con
+     allow-discrete retrasa su ocultamiento hasta que termina la transicion — que es
+     lo que permite animar tambien el cierre, no solo la apertura.
+     Donde el pseudo-elemento no exista, el desplegable se comporta como hasta ahora:
+     abre de golpe. Ninguna funcionalidad depende de esto. */
+  .faq-item::details-content {
+    block-size: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      block-size 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      content-visibility 0.4s allow-discrete;
+  }
+
+  .faq-item[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
+
+  /* Tarjeta pequeña dentro de una lamina.
+     Todo el hover cabe en dos propiedades transicionables: box-shadow y la alfa del
+     resplandor. Nada de pseudo-elementos superpuestos — la baldosa es overflow:hidden,
+     la oscura ya tiene un hijo .dots en absolute, y en Tailwind v4 la capa utilities
+     gana a components, asi que un ::after obligaria a tocar el z-index de los hijos en
+     las seis plantillas. Las sombras inset pintan encima del fondo y debajo del
+     contenido por definicion, sin tocar el apilamiento. */
+  .tile {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+
+    /* Origen del resplandor. La directiva los reescribe con la posicion del cursor;
+       sin JS se quedan aqui, que es un degradado superior perfectamente valido. */
+    --tile-x: 50%;
+    --tile-y: 0%;
+
+    --tile-glow: 144 43 204; /* --color-brand en canales */
+    --tile-ring: rgba(21, 3, 41, 0.05);
+    --tile-ring-hover: rgba(144, 43, 204, 0.32);
+    --tile-shadow: rgba(21, 3, 41, 0.34);
+
+    /* background-image es una capa distinta de background-color, asi que esto no
+       choca con las utilidades bg-white / bg-mid de las plantillas. */
+    background-image: radial-gradient(
+      260px circle at var(--tile-x) var(--tile-y),
+      rgb(var(--tile-glow) / var(--tile-glow-alpha)),
+      transparent 70%
+    );
+
+    /* Filete en reposo: la baldosa blanca sobre papel no tenia borde alguno. */
+    box-shadow: inset 0 0 0 1px var(--tile-ring);
+
+    /* La elevacion usa `translate`, no `transform`, a proposito: casi todas las
+       baldosas llevan tambien [appReveal], y `.reveal--in { transform: none }` vive
+       fuera de @layer. Los estilos sin capa ganan a los de cualquier capa por encima
+       de la especificidad, asi que un `transform` aqui jamas llegaria a aplicarse.
+       `translate` es una propiedad independiente que el revelado no toca.
+       Se declara en 0 0 y no en `none` para que la interpolacion arranque de un
+       valor numerico. */
+    translate: 0 0;
+
+    /* La curva importa mas que la duracion. Con cubic-bezier(0.22, 1, 0.36, 1) —la
+       que usaba antes— la baldosa cubria el 67% del recorrido en los primeros 80ms y
+       el 96% a mitad de camino: se leia como un salto seguido de nada. Esta reparte
+       el movimiento (10% a los 80ms, 70% a los 200ms).
+       Duracion y curva viven en variables porque la regla gemela de mas abajo
+       —.tile.reveal--in— tiene que repetir esta misma lista. */
+    --tile-dur: 0.45s;
+    --tile-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+    transition:
+      translate var(--tile-dur) var(--tile-ease),
+      box-shadow var(--tile-dur) var(--tile-ease),
+      --tile-glow-alpha var(--tile-dur) var(--tile-ease);
+  }
+
+  /* Solo con puntero real: en tactil el :hover se queda pegado despues del toque. */
+  @media (hover: hover) {
+    .tile:hover {
+      translate: 0 -5px;
+      --tile-glow-alpha: 0.16;
+
+      /* Tres capas: el filete se vuelve morado, una sombra de contacto define el
+         canto y una ancha sostiene la elevacion. */
+      box-shadow:
+        inset 0 0 0 1px var(--tile-ring-hover),
+        0 2px 6px rgba(21, 3, 41, 0.07),
+        0 26px 44px -22px var(--tile-shadow);
+    }
+  }
+
+  /* Baldosa oscura: el mismo sistema, con el resplandor y el borde en claro. */
+  .tile--invert {
+    --tile-glow: 230 211 247; /* --color-pale */
+    --tile-ring: rgba(255, 255, 255, 0.08);
+    --tile-ring-hover: rgba(230, 211, 247, 0.4);
+    --tile-shadow: rgba(21, 3, 41, 0.55);
+  }
+
+  .live-dot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background-color: currentColor;
+    animation: pulse-ring 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .arrow-shift {
+    display: inline-block;
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .group:hover .arrow-shift,
+  a:hover > .arrow-shift {
+    transform: translateX(5px);
+  }
+}
+
+/* Cinta corrediza. Vive en el borde inferior de la lamina del hero, no como banda
+   suelta: dos pistas identicas, y cuando la primera termina de desplazarse su ancho
+   completo la segunda ya ocupa su lugar, asi que el ciclo no tiene corte. */
+@layer components {
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  }
+
+  .marquee__track {
+    display: flex;
+    flex: none;
+    align-items: center;
+    min-width: 100%;
+    animation: marquee 42s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  70%,
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+/* Revelado al entrar en la ventana. El estado oculto lo aplica la directiva desde
+   JavaScript; aqui solo vive el aspecto. La transicion se declara en el estado final
+   para que ponerse el estado oculto no anime nada. */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+.reveal--in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1) var(--reveal-delay, 0ms),
+    transform 0.65s cubic-bezier(0.4, 0, 0.2, 1) var(--reveal-delay, 0ms);
+}
+
+/* `transition` es una sola propiedad: la declaracion de .reveal--in no se suma a la
+   de .tile, la sustituye. Y como estas reglas de revelado viven fuera de @layer,
+   ganan a la capa components pase lo que pase con la especificidad — asi que en toda
+   baldosa ya revelada el hover se quedaba sin transicion y la elevacion daba un
+   salto. Aqui se declaran juntas las dos intenciones; el selector compuesto (0,2,0)
+   gana a .reveal--in (0,1,0) dentro del mismo origen sin capa. */
+.tile.reveal--in {
+  transition:
+    translate var(--tile-dur) var(--tile-ease),
+    box-shadow var(--tile-dur) var(--tile-ease),
+    --tile-glow-alpha var(--tile-dur) var(--tile-ease),
+    opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1) var(--reveal-delay, 0ms),
+    transform 0.65s cubic-bezier(0.4, 0, 0.2, 1) var(--reveal-delay, 0ms);
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(-0.6deg);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise-in {
+    animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .drift {
+    animation: drift 6s ease-in-out infinite;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -80,9 +502,24 @@ body {
 
   *,
   *::before,
-  *::after {
+  *::after,
+  /* ::details-content no lo cubre el universal: hay que nombrarlo. */
+  ::details-content {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  /* La cinta se detiene en su posicion inicial en vez de saltar al final del ciclo,
+     que la dejaria vacia. */
+  .marquee__track {
+    animation: none !important;
+  }
+
+  /* La regla de arriba deja la transicion en 0.01ms, pero el desplazamiento seguiria
+     ocurriendo: de golpe, que es justo lo que este usuario evita. El resplandor y el
+     filete si se conservan — son color, no movimiento. */
+  .tile:hover {
+    translate: none;
   }
 }

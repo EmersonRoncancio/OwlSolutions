@@ -9,7 +9,7 @@
   secondaryPath="/nosotros"
 />
 
-<section aria-labelledby="canales-title" class="bg-white py-14 lg:py-[68px]">
+<section aria-labelledby="canales-title" class="sheet bg-paper py-14 lg:py-16">
   <div class="mx-auto max-w-[1180px] px-6 lg:px-8">
     <h2
       id="canales-title"
@@ -18,9 +18,9 @@
       Canales de contacto
     </h2>
 
-    <ul class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       @for (channel of channels; track channel.label) {
-        <li class="rounded-xl border border-line bg-canvas p-6">
+        <li class="tile bg-white p-7">
           <h3 class="mb-1.5 text-[16px] font-bold text-ink">{{ channel.label }}</h3>
           <a
             [href]="channel.href"

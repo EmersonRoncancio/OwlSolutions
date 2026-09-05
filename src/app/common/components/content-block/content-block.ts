@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
+import { Reveal } from '../../directives/reveal';
+
+
 export interface ContentBlockLink {
   readonly label: string;
   readonly path: string;
@@ -8,7 +11,7 @@ export interface ContentBlockLink {
 /** Prose section with an H2, paragraphs, optional bullets and contextual links. */
 @Component({
   selector: 'app-content-block',
-  imports: [],
+  imports: [Reveal],
   templateUrl: './content-block.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

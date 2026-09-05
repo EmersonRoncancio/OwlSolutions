@@ -1,95 +1,92 @@
-<article [class]="sectionClass()" class="py-16 lg:py-[72px]">
-  <div
-    class="mx-auto grid max-w-[1180px] grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16 lg:px-8"
+<article [class]="sheetClass()" class="sheet">
+  <div [class]="dotsClass()" class="dots absolute inset-0 opacity-60" aria-hidden="true"></div>
+
+  <span
+    [class]="ghostClass()"
+    class="pointer-events-none absolute -top-8 right-4 hidden text-[200px] leading-none font-extrabold tracking-[-0.06em] select-none lg:block lg:text-[260px]"
+    aria-hidden="true"
+    >{{ indexLabel() }}</span
   >
-    <div>
-      <p
-        [class]="eyebrowClass()"
-        class="mb-3.5 text-[12.5px] font-bold tracking-[0.08em] uppercase"
+
+  <div class="relative mx-auto max-w-[1180px] px-6 py-14 lg:px-10 lg:py-20">
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-14">
+      <div appReveal>
+        <p
+          [class]="eyebrowClass()"
+          class="mb-6 font-mono text-[10.5px] font-medium tracking-[0.18em] uppercase"
+        >
+          Producto {{ indexLabel() }} / {{ product().eyebrow }}
+        </p>
+
+        <h3
+          [class]="headingClass()"
+          class="text-[28px] leading-[1.08] font-extrabold tracking-[-0.035em] sm:text-[36px]"
+        >
+          {{ product().name }}
+        </h3>
+
+        <ul class="mt-6 flex flex-wrap gap-2">
+          @for (badge of product().badges; track badge) {
+            <li [class]="badgeClass()" class="rounded-full px-3 py-1 text-[12.5px] font-semibold">
+              {{ badge }}
+            </li>
+          }
+        </ul>
+
+        <p [class]="bodyClass()" class="mt-6 max-w-[480px] text-[16px] leading-relaxed">
+          {{ product().description }}
+        </p>
+
+        <a
+          [routerLink]="product().ctaHref"
+          [class]="linkClass()"
+          class="group mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-bold transition-colors"
+        >
+          {{ product().cta }}
+          <span class="arrow-shift" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <!-- La pantalla va superpuesta en absoluto sobre la foto: asi no suma alto
+           propio y la seccion no se estira hacia abajo. -->
+      <div
+        appReveal="130"
+        [class]="artifactOrderClass()"
+        class="relative mx-auto w-full max-w-[360px] sm:max-w-[440px] lg:max-w-[520px]"
       >
-        {{ product().eyebrow }}
-      </p>
+        <picture class="block w-full">
+          <source
+            [srcset]="photoSrcset()"
+            sizes="(min-width: 1024px) 520px, (min-width: 640px) 440px, 100vw"
+            type="image/webp"
+          />
+          <img
+            [src]="product().photo.png"
+            [alt]="product().photo.alt"
+            [width]="product().photo.width"
+            [height]="product().photo.height"
+            loading="lazy"
+            decoding="async"
+            class="block h-auto w-full drop-shadow-[0_28px_52px_rgba(21,3,41,0.42)]"
+          />
+        </picture>
 
-      <h3
-        [class]="headingClass()"
-        class="mb-4 text-[26px] font-extrabold tracking-tight text-balance sm:text-[30px]"
-      >
-        <a [routerLink]="product().ctaHref" class="hover:underline">{{ product().name }}</a>
-      </h3>
-
-      <p [class]="bodyClass()" class="mb-6 text-base leading-[1.65]">
-        {{ product().description }}
-      </p>
-
-      <ul class="mb-6 flex flex-col gap-3">
-        @for (feature of product().features; track feature) {
-          <li class="flex items-start gap-2.5">
-            <span
-              [class]="checkClass()"
-              class="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full text-xs font-extrabold"
-              aria-hidden="true"
-              >✓</span
-            >
-            <span [class]="headingClass()" class="text-[15px]">{{ feature }}</span>
-          </li>
-        }
-      </ul>
-
-      <p [class]="softClass()" class="mb-6 rounded-[10px] px-4 py-3.5 text-sm">
-        <strong [class]="headingClass()" class="font-bold">Caso de uso: </strong>
-        <span [class]="bodyClass()">{{ product().useCase }}</span>
-      </p>
-
-      <a
-        [routerLink]="product().ctaHref"
-        [class]="eyebrowClass()"
-        class="inline-block text-[15px] font-bold hover:underline"
-      >
-        {{ product().cta }} →
-      </a>
-    </div>
-
-    <div
-      [class]="imageOrderClass()"
-      class="relative flex items-center justify-center lg:min-h-[440px]"
-    >
-      <span
-        aria-hidden="true"
-        [class]="haloClass()"
-        class="absolute top-1/2 left-1/2 h-[260px] w-[260px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl sm:h-[340px] sm:w-[340px] lg:h-[340px] lg:w-[340px]"
-      ></span>
-      <span
-        aria-hidden="true"
-        [class]="ringClass()"
-        class="absolute top-1/2 left-1/2 hidden h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-dashed lg:block"
-      ></span>
-      <span
-        aria-hidden="true"
-        [class]="dotClass()"
-        class="absolute top-[10%] left-[6%] hidden h-3 w-3 rounded-full lg:block"
-      ></span>
-      <span
-        aria-hidden="true"
-        [class]="ringDotClass()"
-        class="absolute right-[8%] bottom-[14%] hidden h-[18px] w-[18px] rounded-full border-2 lg:block"
-      ></span>
-
-      <picture>
-        <source
-          [srcset]="imageSrcset()"
-          sizes="(min-width: 1024px) 340px, (min-width: 768px) 440px, (min-width: 640px) 380px, 300px"
-          type="image/webp"
-        />
-        <img
-          [src]="product().image.png"
-          [alt]="product().image.alt"
-          [width]="product().image.width"
-          [height]="product().image.height"
-          loading="lazy"
-          decoding="async"
-          class="relative block h-auto w-full max-w-[300px] drop-shadow-[0_24px_40px_rgba(21,14,36,0.3)] sm:max-w-[380px] md:max-w-[440px] lg:max-w-[340px]"
-        />
-      </picture>
+        <div
+          class="screen-scale absolute bottom-0 left-0 z-10 w-full max-w-[275px] translate-y-[10%] sm:-left-4 lg:-left-8"
+        >
+          @switch (product().artifact) {
+            @case ('pos') {
+              <app-pos-artifact />
+            }
+            @case ('agent') {
+              <app-agent-artifact />
+            }
+            @case ('pipeline') {
+              <app-pipeline-artifact />
+            }
+          }
+        </div>
+      </div>
     </div>
   </div>
 </article>

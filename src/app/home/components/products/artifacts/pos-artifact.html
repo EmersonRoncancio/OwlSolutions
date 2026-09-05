@@ -1,0 +1,59 @@
+<div
+  class="panel rounded-2xl"
+  role="img"
+  aria-label="Cierre de caja del POS de Siwina: ventas del día, facturas emitidas y estado de sincronización de tres sucursales"
+>
+  <div class="flex items-center justify-between border-b border-line bg-tint px-4 py-3" aria-hidden="true">
+    <span class="font-mono text-[10.5px] font-medium tracking-[0.16em] text-brand uppercase">
+      Ventas de hoy
+    </span>
+    <span
+      class="rounded-full border border-line px-2.5 py-1 font-mono text-[10px] font-medium tracking-[0.1em] text-muted uppercase"
+    >
+      3 sucursales
+    </span>
+  </div>
+
+  <div class="px-4 py-4" aria-hidden="true">
+    <div class="flex items-end justify-between gap-3">
+      <p class="font-mono text-[23px] leading-none font-extrabold tracking-tight text-ink">
+        $ 2.480.000
+      </p>
+      <span class="rounded-md bg-tint px-2 py-1 font-mono text-[11px] font-bold text-brand">
+        +12 %
+      </span>
+    </div>
+
+    <div class="mt-5 flex h-[54px] items-end gap-[3px]">
+      @for (bar of bars; track $index; let last = $last) {
+        <span
+          class="flex-1 rounded-t-[2px]"
+          [class]="last ? 'bg-brand' : 'bg-brand/15'"
+          [style.height.%]="bar"
+        ></span>
+      }
+    </div>
+    <p class="mt-2 flex justify-between font-mono text-[10px] tracking-[0.1em] text-muted">
+      <span>08:00</span>
+      <span>20:00</span>
+    </p>
+
+    <dl class="mt-5 text-[12.5px]">
+      <div class="flex items-center justify-between border-t border-line py-2">
+        <dt class="text-muted">Facturas electrónicas</dt>
+        <dd class="font-mono font-semibold text-ink">148</dd>
+      </div>
+      <div class="flex items-center justify-between border-t border-line py-2">
+        <dt class="text-muted">Documento equivalente</dt>
+        <dd class="font-mono font-semibold text-ink">92</dd>
+      </div>
+      <div class="flex items-center justify-between border-t border-line pt-2">
+        <dt class="text-muted">Sincronización</dt>
+        <dd class="inline-flex items-center gap-2 font-mono text-[12px] font-semibold text-brand">
+          <span class="live-dot relative h-1.5 w-1.5 rounded-full bg-brand text-brand"></span>
+          En línea
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>

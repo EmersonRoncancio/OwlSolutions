@@ -1,30 +1,45 @@
-<section
-  id="nosotros"
-  aria-labelledby="nosotros-title"
-  class="mx-auto max-w-[1180px] px-6 py-20 lg:px-8 lg:py-[88px]"
->
-  <div class="mx-auto mb-12 max-w-[640px] text-center">
-    <p class="mb-3.5 text-[13px] font-bold tracking-[0.08em] text-brand uppercase">Nosotros</p>
-    <h2 id="nosotros-title" class="mb-3.5 text-[26px] font-extrabold tracking-tight text-balance sm:text-[32px]">
-      Un equipo enfocado en productos, no solo en proyectos
+<section id="nosotros" aria-labelledby="nosotros-title" class="sheet rounded-b-none bg-paper">
+  <div class="mx-auto max-w-[1180px] px-6 py-14 lg:px-10 lg:py-20">
+    <p appReveal class="mb-5 font-mono text-[10.5px] font-medium tracking-[0.18em] text-brand uppercase">
+      Quiénes somos
+    </p>
+    <h2
+      appReveal="80"
+      id="nosotros-title"
+      class="max-w-[620px] text-[30px] leading-[1.06] font-extrabold tracking-[-0.035em] text-ink sm:text-[40px]"
+    >
+      Producto propio, no plantillas
     </h2>
-    <p class="text-base leading-relaxed text-muted">
-      Construimos software propio para resolver problemas reales de negocio: facturación, atención y
-      ventas — con desarrollo a la medida cuando tu caso lo requiere.
-    </p>
-    <p class="mt-4 text-[15px]">
-      <a routerLink="/nosotros" class="font-bold text-brand hover:underline">
-        Conoce más sobre Siwina →
-      </a>
-    </p>
-  </div>
 
-  <ul class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-    @for (item of differentiators; track item.title) {
-      <li class="rounded-xl border border-line bg-white p-6">
-        <h3 class="mb-1.5 text-[15px] font-bold">{{ item.title }}</h3>
-        <p class="text-[13.5px] text-muted">{{ item.description }}</p>
-      </li>
-    }
-  </ul>
+    <!-- La baldosa grande sube al peldaño oscuro; las cuatro pequeñas se quedan en
+         blanco. La diferencia de valor es lo que arma la composicion. -->
+    <div class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div appReveal class="tile tile--invert relative bg-mid p-7 sm:col-span-2 lg:p-9">
+        <div class="dots absolute inset-0 opacity-60" aria-hidden="true"></div>
+        <div class="relative flex h-full flex-col">
+          <p class="text-[20px] leading-[1.35] font-bold tracking-[-0.02em] text-white sm:text-[24px]">
+            Construimos software propio para resolver problemas reales de negocio: facturación,
+            atención y ventas — con desarrollo a la medida cuando tu caso lo requiere.
+          </p>
+          <a
+            routerLink="/nosotros"
+            class="group mt-auto inline-flex w-fit items-center gap-2 pt-8 text-[15px] font-bold text-soft transition-colors hover:text-white"
+          >
+            Conoce al equipo
+            <span class="arrow-shift" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      @for (item of differentiators; track item.title; let i = $index) {
+        <div [appReveal]="(i + 1) * 90" class="tile bg-white p-7">
+          <p class="mb-5 font-mono text-[12px] font-extrabold text-brand" aria-hidden="true">
+            {{ '0' + (i + 1) }}
+          </p>
+          <h3 class="mb-2 text-[16.5px] leading-snug font-bold text-ink">{{ item.title }}</h3>
+          <p class="text-[14px] leading-relaxed text-muted">{{ item.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
 </section>

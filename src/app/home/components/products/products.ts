@@ -2,9 +2,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ProductSection } from './productSection/productSection';
 import { Product } from './types/product.types';
 
+import { Reveal } from '../../../common/directives/reveal';
+
 @Component({
   selector: 'app-products',
-  imports: [ProductSection],
+  imports: [ProductSection, Reveal],
   templateUrl: './products.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -12,10 +14,11 @@ export class Products {
   protected readonly products: readonly Product[] = [
     {
       id: 'pos-dian',
-      eyebrow: 'Producto 01 · Punto de venta',
+      eyebrow: 'Punto de venta',
       name: 'POS con facturación electrónica DIAN',
       description:
         'Un punto de venta pensado para el comercio colombiano: factura electrónica validada ante la DIAN en segundos, control de inventario y reportes de ventas en un solo lugar.',
+      badges: ['Cumple con la DIAN', 'Multi-sucursal', 'Funciona offline'],
       features: [
         'Facturación electrónica y documento equivalente ante la DIAN',
         'Control de inventario y multi-sucursal',
@@ -26,7 +29,8 @@ export class Products {
         'ideal para tiendas, restaurantes y negocios con múltiples puntos de venta que necesitan cumplir con la DIAN sin complicarse.',
       cta: 'Ver el POS con facturación DIAN',
       ctaHref: '/pos',
-      image: {
+      artifact: 'pos',
+      photo: {
         png: '/images/pos-barista.png',
         webp: '/images/pos-barista.webp',
         webpSmall: '/images/pos-barista-340.webp',
@@ -35,15 +39,14 @@ export class Products {
         width: 680,
         height: 580,
       },
-      theme: 'light',
-      imageFirst: false,
     },
     {
       id: 'agentes-ia',
-      eyebrow: 'Producto 02 · Atención al cliente',
+      eyebrow: 'Atención al cliente',
       name: 'Agentes de IA para soporte y atención',
       description:
         'Agentes de inteligencia artificial que responden, agendan y resuelven por WhatsApp, chat web y llamadas — disponibles 24/7 y con escalamiento a un humano cuando lo necesitan.',
+      badges: ['WhatsApp, web y voz', 'Atención 24/7', 'Escala a una persona'],
       features: [
         'Atención 24/7 por WhatsApp, web y voz',
         'Entrenado con la información de tu negocio',
@@ -54,7 +57,8 @@ export class Products {
         'pensado para negocios que reciben muchas consultas repetitivas y quieren responder rápido sin crecer el equipo de soporte.',
       cta: 'Ver los agentes de IA para atención',
       ctaHref: '/agentes-ia',
-      image: {
+      artifact: 'agent',
+      photo: {
         png: '/images/support-headphones.png',
         webp: '/images/support-headphones.webp',
         webpSmall: '/images/support-headphones-340.webp',
@@ -63,15 +67,14 @@ export class Products {
         width: 680,
         height: 453,
       },
-      theme: 'dark',
-      imageFirst: true,
     },
     {
       id: 'plataforma-ventas',
-      eyebrow: 'Producto 03 · Ventas',
+      eyebrow: 'Ventas',
       name: 'Plataforma de ventas con agente de IA',
       description:
         'Centraliza todos tus canales de venta en un solo lugar y deja que un agente de IA califique leads, haga seguimiento y agende reuniones por ti.',
+      badges: ['Bandeja única', 'Califica leads solo', 'Reportes por canal'],
       features: [
         'Bandeja única para WhatsApp, redes e email',
         'Agente de IA que califica y da seguimiento a leads',
@@ -82,7 +85,8 @@ export class Products {
         'para equipos comerciales que pierden leads entre canales y quieren un agente que nunca deje una conversación sin respuesta.',
       cta: 'Ver la plataforma de ventas con IA',
       ctaHref: '/plataforma-ventas',
-      image: {
+      artifact: 'pipeline',
+      photo: {
         png: '/images/team-group.png',
         webp: '/images/team-group.webp',
         webpSmall: '/images/team-group-340.webp',
@@ -91,8 +95,9 @@ export class Products {
         width: 680,
         height: 453,
       },
-      theme: 'tint',
-      imageFirst: false,
     },
   ];
+
+  /** Se deriva del catalogo para que la volanta nunca contradiga a la lista. */
+  protected readonly productCount = String(this.products.length).padStart(2, '0');
 }

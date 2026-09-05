@@ -2,9 +2,12 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { CONTACT_EMAIL, WHATSAPP_URL } from '../../seo/site.config';
 
+import { Reveal } from '../../directives/reveal';
+
+
 @Component({
   selector: 'app-cta-band',
-  imports: [],
+  imports: [Reveal],
   templateUrl: './cta-band.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

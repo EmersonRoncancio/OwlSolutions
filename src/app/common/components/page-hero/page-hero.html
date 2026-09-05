@@ -1,56 +1,51 @@
-<section
-  class="relative overflow-hidden bg-[linear-gradient(160deg,#2A1155_0%,#4C1D95_48%,#902BCC_100%)]"
->
-  <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
-    <span
-      class="absolute top-[70px] right-[80px] hidden h-[120px] w-[120px] rounded-full border-2 border-dashed border-white/20 lg:block"
-    ></span>
-    <span
-      class="absolute -bottom-32 -left-24 h-[360px] w-[360px] rounded-full bg-[radial-gradient(circle,rgba(233,79,209,0.26)_0%,transparent_70%)] blur-[10px]"
-    ></span>
-  </div>
+<section class="sheet bg-[linear-gradient(135deg,#23063f_0%,#3c0b6b_50%,#7b1fb8_100%)]">
+  <div class="dots absolute inset-0 opacity-70" aria-hidden="true"></div>
+  <div
+    class="absolute -top-32 -right-24 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,rgba(163,64,223,0.45)_0%,transparent_68%)]"
+    aria-hidden="true"
+  ></div>
 
-  <div class="relative mx-auto max-w-[1180px] px-6 pt-12 pb-16 lg:px-8 lg:pt-16 lg:pb-20">
-    <p class="mb-4 text-[12.5px] font-bold tracking-[0.08em] text-lavender uppercase">
+  <div class="relative mx-auto max-w-[1180px] px-6 py-14 lg:px-10 lg:py-20">
+    <p class="mb-6 font-mono text-[10.5px] font-medium tracking-[0.18em] text-soft uppercase">
       {{ eyebrow() }}
     </p>
 
     <h1
-      class="mb-5 max-w-[760px] text-[32px] leading-[1.12] font-extrabold tracking-tight text-balance text-white sm:text-[42px]"
+      class="max-w-[860px] text-[32px] leading-[1.06] font-extrabold tracking-[-0.035em] text-white sm:text-[42px] lg:text-[50px]"
     >
       {{ heading() }}
     </h1>
 
-    <p class="mb-7 max-w-[640px] text-[16.5px] leading-relaxed text-lavender">{{ lead() }}</p>
+    <p class="mt-6 max-w-[600px] text-[16.5px] leading-relaxed text-pale">{{ lead() }}</p>
 
     @if (highlights().length) {
-      <ul class="mb-8 flex flex-wrap gap-2.5">
+      <ul class="mt-8 flex flex-wrap gap-2.5">
         @for (highlight of highlights(); track highlight) {
-          <li
-            class="rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-[13px] font-semibold text-white"
-          >
+          <li class="rounded-full bg-white/12 px-3.5 py-1.5 text-[13px] font-semibold text-white">
             {{ highlight }}
           </li>
         }
       </ul>
     }
 
-    <div class="flex flex-wrap items-center gap-3.5">
+    <div class="mt-9 flex flex-wrap items-center gap-3">
       <a
         [href]="ctaHref()"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-block rounded-full bg-accent px-7 py-3.5 text-[15px] font-extrabold text-brand-night shadow-[0_14px_30px_-10px_rgba(233,79,209,0.6)] transition-transform hover:-translate-y-0.5"
+        class="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-[15px] font-bold text-ink transition-colors hover:bg-pale"
       >
-        {{ ctaLabel() }} →
+        {{ ctaLabel() }}
+        <span class="arrow-shift" aria-hidden="true">→</span>
       </a>
 
       @if (secondaryLabel() && secondaryPath()) {
         <a
           [routerLink]="secondaryPath()"
-          class="rounded-full border border-white/30 px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:border-white/60"
+          class="group inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-white/20"
         >
           {{ secondaryLabel() }}
+          <span class="arrow-shift text-soft" aria-hidden="true">→</span>
         </a>
       }
     </div>

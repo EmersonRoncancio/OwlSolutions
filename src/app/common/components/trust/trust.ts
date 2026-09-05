@@ -1,7 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { Reveal } from '../../directives/reveal';
+
+
 @Component({
   selector: 'app-trust',
+  imports: [Reveal],
   templateUrl: './trust.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

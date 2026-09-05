@@ -1,17 +1,21 @@
-<section aria-labelledby="relacionados-title" class="bg-tint py-14 lg:py-[68px]">
-  <div class="mx-auto max-w-[1180px] px-6 lg:px-8">
+<section aria-labelledby="relacionados-title" class="sheet bg-tint">
+  <div class="mx-auto max-w-[1180px] px-6 py-14 lg:px-10 lg:py-16">
     <h2
+      appReveal
       id="relacionados-title"
-      class="mb-8 text-[24px] font-extrabold tracking-tight text-balance sm:text-[28px]"
+      class="max-w-[700px] text-[24px] leading-[1.1] font-extrabold tracking-[-0.03em] text-ink sm:text-[32px]"
     >
       {{ heading() }}
     </h2>
 
-    <ul class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      @for (link of links(); track link.path) {
-        <li class="rounded-xl border border-line bg-white p-6">
-          <h3 class="mb-1.5 text-[16px] font-bold">
-            <a [routerLink]="link.path" class="text-brand hover:underline">{{ link.label }}</a>
+    <ul class="mt-9 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      @for (link of links(); track link.path; let i = $index) {
+        <li [appReveal]="i * 70" class="tile group bg-white p-7">
+          <h3 class="mb-2.5 text-[16.5px] leading-snug font-bold">
+            <a [routerLink]="link.path" class="inline-flex items-center gap-2 text-brand">
+              {{ link.label }}
+              <span class="arrow-shift" aria-hidden="true">→</span>
+            </a>
           </h3>
           <p class="text-[14px] leading-relaxed text-muted">{{ link.description }}</p>
         </li>

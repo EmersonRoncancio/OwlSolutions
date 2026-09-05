@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
+import { Reveal } from '../../directives/reveal';
+
+
 export interface Feature {
   readonly title: string;
   readonly description: string;
@@ -7,7 +10,7 @@ export interface Feature {
 
 @Component({
   selector: 'app-feature-grid',
-  imports: [],
+  imports: [Reveal],
   templateUrl: './feature-grid.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

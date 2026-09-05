@@ -1,48 +1,60 @@
-<footer class="border-t border-line pt-14 pb-8">
-  <div
-    class="mx-auto grid max-w-[1180px] grid-cols-1 gap-10 px-6 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr] lg:px-8"
-  >
-    <div>
-      <p class="mb-3 text-xl font-extrabold text-brand">Siwina</p>
-      <p class="max-w-[280px] text-sm leading-relaxed text-muted">
-        Productos de software que resuelven problemas reales de negocio: facturación, atención y
-        ventas.
-      </p>
+<!-- El pie no lleva lamina: se apoya directo en el fondo de la pagina, que es el
+     peldaño mas profundo de la escalera. -->
+<footer class="px-[var(--sheet-gap)] pb-[var(--sheet-gap)]">
+  <div class="mx-auto max-w-[1180px] px-6 pt-14 lg:px-10">
+    <div class="grid gap-12 pb-12 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr]">
+      <div>
+        <p class="inline-flex items-baseline text-[28px] leading-none font-extrabold tracking-[-0.045em] text-white">
+          Siwina<span class="text-soft" aria-hidden="true">.</span>
+        </p>
+        <p class="mt-5 max-w-[280px] text-[15px] leading-relaxed text-pale">
+          Productos de software que resuelven problemas reales de negocio: facturación, atención y
+          ventas.
+        </p>
+        <p
+          class="mt-6 inline-flex items-center gap-2 font-mono text-[10.5px] font-medium tracking-[0.18em] text-soft uppercase"
+        >
+          <span class="h-1.5 w-1.5 rounded-full bg-soft" aria-hidden="true"></span>
+          Hecho en Colombia
+        </p>
+      </div>
+
+      @for (column of columns; track column.title) {
+        <nav [attr.aria-label]="column.title">
+          <h2 class="mb-5 font-mono text-[10.5px] font-medium tracking-[0.18em] text-soft uppercase">
+            {{ column.title }}
+          </h2>
+          <ul class="flex flex-col gap-3">
+            @for (link of column.links; track link.label) {
+              <li>
+                @if (link.external) {
+                  <a
+                    [href]="link.href"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-[14.5px] text-pale transition-colors hover:text-white"
+                  >
+                    {{ link.label }}
+                  </a>
+                } @else {
+                  <a
+                    [routerLink]="link.href"
+                    class="text-[14.5px] text-pale transition-colors hover:text-white"
+                  >
+                    {{ link.label }}
+                  </a>
+                }
+              </li>
+            }
+          </ul>
+        </nav>
+      }
     </div>
 
-    @for (column of columns; track column.title) {
-      <nav [attr.aria-label]="column.title">
-        <h2 class="mb-3.5 text-sm font-bold">{{ column.title }}</h2>
-        <ul class="flex flex-col gap-2.5">
-          @for (link of column.links; track link.label) {
-            <li>
-              @if (link.external) {
-                <a
-                  [href]="link.href"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-sm text-muted transition-colors hover:text-brand"
-                >
-                  {{ link.label }}
-                </a>
-              } @else {
-                <a
-                  [routerLink]="link.href"
-                  class="text-sm text-muted transition-colors hover:text-brand"
-                >
-                  {{ link.label }}
-                </a>
-              }
-            </li>
-          }
-        </ul>
-      </nav>
-    }
-  </div>
-
-  <div class="mx-auto mt-8 max-w-[1180px] border-t border-line px-6 pt-6 text-center lg:px-8">
-    <small class="text-[13px] text-slate-soft">
-      © {{ year }} Siwina. Todos los derechos reservados.
-    </small>
+    <div class="border-t border-white/10 py-6">
+      <small class="font-mono text-[11.5px] tracking-[0.04em] text-soft">
+        © {{ year }} Siwina. Todos los derechos reservados.
+      </small>
+    </div>
   </div>
 </footer>

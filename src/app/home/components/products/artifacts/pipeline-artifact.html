@@ -1,0 +1,55 @@
+<div
+  class="panel rounded-2xl"
+  role="img"
+  aria-label="Pipeline de ventas de Siwina con leads repartidos entre nuevos, calificados y cierre, y la conversión por canal"
+>
+  <div class="flex items-center justify-between border-b border-line bg-tint px-4 py-3" aria-hidden="true">
+    <span class="font-mono text-[10.5px] font-medium tracking-[0.16em] text-brand uppercase">
+      Pipeline · Septiembre
+    </span>
+    <span class="inline-flex items-center gap-2 font-mono text-[10px] font-bold tracking-[0.12em] text-brand uppercase">
+      <span class="live-dot relative h-1.5 w-1.5 rounded-full bg-brand text-brand"></span>
+      Agente activo
+    </span>
+  </div>
+
+  <div class="grid grid-cols-3 gap-2 px-4 py-4" aria-hidden="true">
+    @for (column of columns; track column.title) {
+      <div>
+        <p class="mb-2.5 flex items-baseline justify-between gap-1">
+          <span class="font-mono text-[9.5px] font-medium tracking-[0.1em] text-muted uppercase">
+            {{ column.title }}
+          </span>
+          <span class="font-mono text-[11px] font-bold text-ink">{{ column.count }}</span>
+        </p>
+        <div class="flex flex-col gap-2">
+          @for (lead of column.leads; track lead.name) {
+            <div class="rounded-lg border border-line bg-tint px-2 py-1.5">
+              <p class="text-[11.5px] leading-tight font-semibold text-ink">{{ lead.name }}</p>
+              <p class="mt-1 font-mono text-[9.5px] text-muted">{{ lead.channel }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="border-t border-line px-4 py-3.5" aria-hidden="true">
+    <p class="mb-3 font-mono text-[9.5px] font-medium tracking-[0.14em] text-muted uppercase">
+      Conversión por canal
+    </p>
+    <dl class="flex flex-col gap-2">
+      @for (channel of channels; track channel.channel) {
+        <div class="flex items-center gap-3">
+          <dt class="w-[70px] flex-none text-[12px] text-muted">{{ channel.channel }}</dt>
+          <div class="h-1.5 flex-1 overflow-hidden rounded-full bg-line">
+            <span class="block h-full rounded-full bg-brand" [style.width.%]="channel.share"></span>
+          </div>
+          <dd class="w-9 flex-none text-right font-mono text-[11.5px] font-semibold text-ink">
+            {{ channel.share }} %
+          </dd>
+        </div>
+      }
+    </dl>
+  </div>
+</div>

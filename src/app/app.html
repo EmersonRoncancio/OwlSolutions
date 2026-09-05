@@ -7,7 +7,9 @@
 
 <app-navbar />
 
-<main id="contenido">
+<!-- Las laminas viven aqui: el padding y el gap del contenedor son lo que las hace
+     flotar sobre el fondo morado, asi que ninguna seccion tiene que repetirlo. -->
+<main appTileGlow id="contenido" class="p-[var(--sheet-gap)]">
   <router-outlet />
 </main>
 

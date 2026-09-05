@@ -1,15 +1,18 @@
-<section aria-labelledby="clientes-title" class="bg-tint py-16 lg:py-[72px]">
-  <div class="mx-auto max-w-[1180px] px-6 text-center lg:px-8">
-    <h2 id="clientes-title" class="mb-2.5 text-[26px] font-extrabold tracking-tight text-balance text-brand sm:text-[30px]">
-      Ellos depositaron su confianza en nosotros
+<section aria-labelledby="clientes-title" class="sheet rounded-none bg-tint">
+  <div
+    class="mx-auto flex max-w-[1180px] flex-col gap-6 px-6 py-10 lg:flex-row lg:items-center lg:gap-14 lg:px-10"
+  >
+    <h2
+      appReveal
+      id="clientes-title"
+      class="max-w-[220px] flex-none text-[17px] leading-[1.2] font-extrabold tracking-[-0.02em] text-ink"
+    >
+      Confían en <span class="text-brand">nosotros</span>
     </h2>
-    <p class="mb-11 text-[15px] text-muted">
-      Colaboramos con empresas líderes para impulsar su transformación digital
-    </p>
 
-    <ul class="flex flex-wrap items-center justify-center gap-8 lg:gap-10">
+    <ul appReveal="90" class="flex flex-wrap items-center gap-x-9 gap-y-4 lg:gap-x-12">
       @for (client of clients; track client) {
-        <li class="text-[15px] font-bold text-slate-soft">{{ client }}</li>
+        <li class="text-[16px] font-bold tracking-[-0.015em] text-muted">{{ client }}</li>
       }
     </ul>
   </div>

@@ -1,15 +1,26 @@
-<section id="productos" aria-labelledby="productos-title" class="pt-6">
-  <div class="mx-auto max-w-[1180px] px-6 pb-14 text-center lg:px-8">
-    <p class="mb-3.5 text-[13px] font-bold tracking-[0.08em] text-brand uppercase">Productos</p>
-    <h2 id="productos-title" class="mb-3.5 text-[30px] font-extrabold tracking-tight text-balance sm:text-[38px]">
-      Tres productos, un mismo estándar
-    </h2>
-    <p class="mx-auto max-w-[560px] text-[17px] text-muted">
-      Cada uno resuelve un problema puntual de tu operación y se puede adoptar por separado.
-    </p>
+<!-- Cada producto es su propia lamina; el gap las separa como las del resto de la
+     pagina, asi que el bloque entero se lee como una pila. -->
+<section id="productos" aria-labelledby="productos-title">
+  <div class="sheet rounded-t-none bg-paper">
+    <div class="mx-auto max-w-[1180px] px-6 py-14 lg:px-10 lg:py-16">
+      <p class="mb-5 font-mono text-[10.5px] font-medium tracking-[0.18em] text-brand uppercase">
+        Los productos / {{ productCount }}
+      </p>
+      <div appReveal class="grid gap-6 lg:grid-cols-[1fr_360px] lg:items-end lg:gap-12">
+        <h2
+          id="productos-title"
+          class="max-w-[600px] text-[30px] leading-[1.06] font-extrabold tracking-[-0.035em] text-ink sm:text-[40px]"
+        >
+          Productos distintos, un mismo estándar
+        </h2>
+        <p class="text-[15.5px] leading-relaxed text-muted">
+          Cada uno resuelve un problema puntual de tu operación y se puede adoptar por separado.
+        </p>
+      </div>
+    </div>
   </div>
 
-  @for (product of products; track product.id) {
-    <app-product-section [product]="product" />
+  @for (product of products; track product.id; let i = $index) {
+    <app-product-section [product]="product" [index]="i + 1" />
   }
 </section>

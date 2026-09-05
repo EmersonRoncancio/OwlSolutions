@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-/** Purple hero reused by every internal landing page. Holds the page H1. */
+
+/** Cabecera clara reutilizada por cada landing interna. Sostiene el H1 de la pagina. */
 @Component({
   selector: 'app-page-hero',
   imports: [RouterLink],

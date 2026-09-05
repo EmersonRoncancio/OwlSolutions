@@ -1,12 +1,12 @@
-<nav aria-label="Ruta de navegación" class="mx-auto max-w-[1180px] px-6 pt-5 lg:px-8">
-  <ol class="flex flex-wrap items-center gap-1.5 text-[13px] text-muted">
+<nav aria-label="Ruta de navegación" class="mx-auto w-full max-w-[1240px] px-5 pt-2 lg:px-7">
+  <ol class="flex flex-wrap items-center gap-2 font-mono text-[11px] tracking-[0.08em] text-soft">
     @for (item of items(); track item.path; let last = $last) {
-      <li class="flex items-center gap-1.5">
+      <li class="flex items-center gap-2">
         @if (last) {
-          <span aria-current="page" class="font-semibold text-ink">{{ item.label }}</span>
+          <span aria-current="page" class="font-semibold text-white">{{ item.label }}</span>
         } @else {
-          <a [routerLink]="item.path" class="transition-colors hover:text-brand">{{ item.label }}</a>
-          <span aria-hidden="true" class="text-slate-soft">/</span>
+          <a [routerLink]="item.path" class="transition-colors hover:text-white">{{ item.label }}</a>
+          <span aria-hidden="true" class="text-white/25">/</span>
         }
       </li>
     }
