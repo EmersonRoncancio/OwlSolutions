@@ -198,7 +198,8 @@ export class Pos {
         {
           '@type': 'SoftwareApplication',
           '@id': `${absoluteUrl('/pos')}#software`,
-          name: 'POS Siwina',
+          name: 'Zemli',
+          alternateName: 'POS Siwina con facturación electrónica DIAN',
           applicationCategory: 'BusinessApplication',
           operatingSystem: 'Web',
           url: absoluteUrl('/pos'),

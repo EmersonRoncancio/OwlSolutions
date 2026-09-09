@@ -69,10 +69,11 @@ export class ProductSection {
    * Tres candidatas para la foto: 340w cubre el render de escritorio a 1x, 560w el
    * de movil a densidades altas y 680w el 2x de escritorio.
    */
-  protected readonly photoSrcset = computed(() => {
-    const foto = this.product().photo;
-    return `${foto.webpSmall} 340w, ${foto.webpMedium} 560w, ${foto.webp} 680w`;
-  });
+  protected readonly photoSrcset = computed(() =>
+    this.product()
+      .photo.sources.map((fuente) => `${fuente.src} ${fuente.width}w`)
+      .join(', '),
+  );
 
   protected readonly artifactOrderClass = computed(() =>
     this.index() % 2 === 0 ? 'lg:order-first' : 'lg:order-last',

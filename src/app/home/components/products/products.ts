@@ -15,7 +15,8 @@ export class Products {
     {
       id: 'pos-dian',
       eyebrow: 'Punto de venta',
-      name: 'POS con facturación electrónica DIAN',
+      name: 'Zemli',
+      tagline: 'POS con facturación electrónica DIAN',
       description:
         'Un punto de venta pensado para el comercio colombiano: factura electrónica validada ante la DIAN en segundos, control de inventario y reportes de ventas en un solo lugar.',
       badges: ['Cumple con la DIAN', 'Multi-sucursal', 'Funciona offline'],
@@ -31,19 +32,29 @@ export class Products {
       ctaHref: '/pos',
       artifact: 'pos',
       photo: {
-        png: '/images/pos-barista.png',
-        webp: '/images/pos-barista.webp',
-        webpSmall: '/images/pos-barista-340.webp',
-        webpMedium: '/images/pos-barista-560.webp',
-        alt: 'Barista facturando una venta desde el POS de Siwina en una tablet con datáfono',
-        width: 680,
-        height: 580,
+        png: '/images/barista-pos.png',
+        // Candidatos exportados a mano. Los anchos NO son redondos por capricho: caen
+        // justo en lo que pide la maqueta, para que el navegador no reescale encima.
+        // La ranura mide 520px de CSS, asi que 520 sirve 1x y 1040 sirve 2x sin tocar
+        // un pixel; 760 cubre el movil a 2x y 1448 las pantallas a 3x. El numero de
+        // `width` tiene que ser el ancho REAL del archivo: nadie lo verifica, y si
+        // miente el navegador elige mal sin avisar de nada.
+        sources: [
+          { src: '/images/barista-pos-520.webp', width: 520 },
+          { src: '/images/barista-pos-760.webp', width: 760 },
+          { src: '/images/barista-pos-1040.webp', width: 1040 },
+          { src: '/images/barista-pos-1448.webp', width: 1448 },
+        ],
+        alt: 'Cajera escaneando un producto con lector de código de barras junto a la terminal POS de Siwina, con datáfono e impresora de tirilla',
+        width: 1448,
+        height: 1448,
       },
     },
     {
       id: 'agentes-ia',
       eyebrow: 'Atención al cliente',
-      name: 'Agentes de IA para soporte y atención',
+      name: 'Soy Alondra',
+      tagline: 'Agentes de IA para soporte y atención',
       description:
         'Agentes de inteligencia artificial que responden, agendan y resuelven por WhatsApp, chat web y llamadas — disponibles 24/7 y con escalamiento a un humano cuando lo necesitan.',
       badges: ['WhatsApp, web y voz', 'Atención 24/7', 'Escala a una persona'],
@@ -60,18 +71,23 @@ export class Products {
       artifact: 'agent',
       photo: {
         png: '/images/support-headphones.png',
-        webp: '/images/support-headphones.webp',
-        webpSmall: '/images/support-headphones-340.webp',
-        webpMedium: '/images/support-headphones-560.webp',
-        alt: 'Agente de soporte con diadema atendiendo clientes con ayuda de IA',
-        width: 680,
-        height: 453,
+        // Mismas cuatro tallas que las demas: todas parten de un original de 1448px.
+        sources: [
+          { src: '/images/support-headphones-520.webp', width: 520 },
+          { src: '/images/support-headphones-760.webp', width: 760 },
+          { src: '/images/support-headphones-1040.webp', width: 1040 },
+          { src: '/images/support-headphones-1448.webp', width: 1448 },
+        ],
+        alt: 'Agente de soporte con diadema atendiendo clientes desde su portátil con ayuda de IA',
+        width: 1448,
+        height: 1448,
       },
     },
     {
       id: 'plataforma-ventas',
       eyebrow: 'Ventas',
-      name: 'Plataforma de ventas con agente de IA',
+      name: 'Mesa Origen',
+      tagline: 'Plataforma de ventas con agente de IA',
       description:
         'Centraliza todos tus canales de venta en un solo lugar y deja que un agente de IA califique leads, haga seguimiento y agende reuniones por ti.',
       badges: ['Bandeja única', 'Califica leads solo', 'Reportes por canal'],
@@ -88,12 +104,16 @@ export class Products {
       artifact: 'pipeline',
       photo: {
         png: '/images/team-group.png',
-        webp: '/images/team-group.webp',
-        webpSmall: '/images/team-group-340.webp',
-        webpMedium: '/images/team-group-560.webp',
+        // Mismas cuatro tallas que las demas: todas parten de un original de 1448px.
+        sources: [
+          { src: '/images/team-group-520.webp', width: 520 },
+          { src: '/images/team-group-760.webp', width: 760 },
+          { src: '/images/team-group-1040.webp', width: 1040 },
+          { src: '/images/team-group-1448.webp', width: 1448 },
+        ],
         alt: 'Equipo comercial revisando en laptop y celular el pipeline de ventas de Siwina',
-        width: 680,
-        height: 453,
+        width: 1448,
+        height: 1448,
       },
     },
   ];

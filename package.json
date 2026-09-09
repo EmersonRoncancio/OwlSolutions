@@ -7,7 +7,6 @@
     "build": "ng build && node tools/postbuild.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "images:responsive": "bash tools/build-images.sh",
     "postbuild:sitemap": "node tools/postbuild.mjs",
     "icons:brand": "node tools/build-brand-icons.mjs"
   },
@@ -44,6 +43,7 @@
     "@tailwindcss/postcss": "^4.1.18",
     "jsdom": "^27.1.0",
     "postcss": "^8.5.6",
+    "sharp": "^0.35.4",
     "tailwindcss": "^4.1.18",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"

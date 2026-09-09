@@ -141,7 +141,8 @@ export class PlataformaVentas {
         {
           '@type': 'Service',
           '@id': `${absoluteUrl('/plataforma-ventas')}#service`,
-          name: 'Plataforma de ventas con agente de IA',
+          name: 'Mesa Origen',
+          alternateName: 'Plataforma de ventas con agente de IA',
           serviceType: 'Automatización de ventas',
           url: absoluteUrl('/plataforma-ventas'),
           description:

@@ -35,7 +35,8 @@ export class Home {
               item: {
                 '@type': 'SoftwareApplication',
                 '@id': `${absoluteUrl('/pos')}#software`,
-                name: 'POS con facturación electrónica DIAN',
+                name: 'Zemli',
+                alternateName: 'POS con facturación electrónica DIAN',
                 applicationCategory: 'BusinessApplication',
                 operatingSystem: 'Web',
                 url: absoluteUrl('/pos'),
@@ -50,7 +51,8 @@ export class Home {
               item: {
                 '@type': 'Service',
                 '@id': `${absoluteUrl('/agentes-ia')}#service`,
-                name: 'Agentes de IA para soporte y atención',
+                name: 'Soy Alondra',
+                alternateName: 'Agentes de IA para soporte y atención',
                 serviceType: 'Atención al cliente con inteligencia artificial',
                 url: absoluteUrl('/agentes-ia'),
                 description:
@@ -64,7 +66,8 @@ export class Home {
               item: {
                 '@type': 'Service',
                 '@id': `${absoluteUrl('/plataforma-ventas')}#service`,
-                name: 'Plataforma de ventas con agente de IA',
+                name: 'Mesa Origen',
+                alternateName: 'Plataforma de ventas con agente de IA',
                 serviceType: 'Automatización de ventas',
                 url: absoluteUrl('/plataforma-ventas'),
                 description:

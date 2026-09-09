@@ -159,7 +159,8 @@ export class AgentesIa {
         {
           '@type': 'Service',
           '@id': `${absoluteUrl('/agentes-ia')}#service`,
-          name: 'Agentes de IA para soporte y atención',
+          name: 'Soy Alondra',
+          alternateName: 'Agentes de IA para soporte y atención',
           serviceType: 'Atención al cliente con inteligencia artificial',
           url: absoluteUrl('/agentes-ia'),
           description:

@@ -25,6 +25,13 @@
           {{ product().name }}
         </h3>
 
+        <p
+          [class]="bodyClass()"
+          class="mt-2.5 text-[17px] leading-snug font-semibold tracking-[-0.01em] sm:text-[19px]"
+        >
+          {{ product().tagline }}
+        </p>
+
         <ul class="mt-6 flex flex-wrap gap-2">
           @for (badge of product().badges; track badge) {
             <li [class]="badgeClass()" class="rounded-full px-3 py-1 text-[12.5px] font-semibold">
@@ -48,16 +55,22 @@
       </div>
 
       <!-- La pantalla va superpuesta en absoluto sobre la foto: asi no suma alto
-           propio y la seccion no se estira hacia abajo. -->
+           propio y la seccion no se estira hacia abajo.
+
+           La foto por si sola queda centrada, pero el panel sobresale 27px por abajo y
+           23px por la izquierda, asi que el conjunto se ve caido hacia esa esquina. El
+           desplazamiento es la mitad de cada sobresaliente, para centrar opticamente
+           foto y panel como un bloque. Va en `translate` y no en `transform` a
+           proposito: `transform` lo gobierna [appReveal] y lo dejaria sin efecto. -->
       <div
         appReveal="130"
         [class]="artifactOrderClass()"
-        class="relative mx-auto w-full max-w-[360px] sm:max-w-[440px] lg:max-w-[520px]"
+        class="relative mx-auto w-full max-w-[360px] sm:max-w-[440px] lg:translate-x-3 lg:-translate-y-3.5"
       >
         <picture class="block w-full">
           <source
             [srcset]="photoSrcset()"
-            sizes="(min-width: 1024px) 520px, (min-width: 640px) 440px, 100vw"
+            sizes="(min-width: 640px) 440px, 100vw"
             type="image/webp"
           />
           <img
