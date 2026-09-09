@@ -28,7 +28,7 @@ export class Products {
       ],
       useCase:
         'ideal para tiendas, restaurantes y negocios con múltiples puntos de venta que necesitan cumplir con la DIAN sin complicarse.',
-      cta: 'Ver el POS con facturación DIAN',
+      cta: 'Conocer Zemli',
       ctaHref: '/pos',
       artifact: 'pos',
       photo: {
@@ -66,7 +66,7 @@ export class Products {
       ],
       useCase:
         'pensado para negocios que reciben muchas consultas repetitivas y quieren responder rápido sin crecer el equipo de soporte.',
-      cta: 'Ver los agentes de IA para atención',
+      cta: 'Conocer Soy Alondra',
       ctaHref: '/agentes-ia',
       artifact: 'agent',
       photo: {
@@ -99,7 +99,7 @@ export class Products {
       ],
       useCase:
         'para equipos comerciales que pierden leads entre canales y quieren un agente que nunca deje una conversación sin respuesta.',
-      cta: 'Ver la plataforma de ventas con IA',
+      cta: 'Conocer Mesa Origen',
       ctaHref: '/plataforma-ventas',
       artifact: 'pipeline',
       photo: {

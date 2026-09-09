@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, booleanAttribute, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 
@@ -11,6 +11,13 @@ import { RouterLink } from '@angular/router';
 })
 export class PageHero {
   readonly eyebrow = input.required<string>();
+
+  /**
+   * Marca la volanta como nombre de producto y no como categoria. En las paginas de
+   * Zemli, Soy Alondra y Mesa Origen ahi va la marca, y merece leerse como tal; en
+   * las otras seis es una etiqueta («Blog», «Contacto») que debe quedarse discreta.
+   */
+  readonly eyebrowIsProductName = input(false, { transform: booleanAttribute });
   readonly heading = input.required<string>();
   readonly lead = input.required<string>();
   readonly highlights = input<readonly string[]>([]);

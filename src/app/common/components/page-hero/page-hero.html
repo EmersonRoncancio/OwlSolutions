@@ -6,9 +6,19 @@
   ></div>
 
   <div class="relative mx-auto max-w-[1180px] px-6 py-14 lg:px-10 lg:py-20">
-    <p class="mb-6 font-mono text-[10.5px] font-medium tracking-[0.18em] text-soft uppercase">
-      {{ eyebrow() }}
-    </p>
+    @if (eyebrowIsProductName()) {
+      <!-- El nombre del producto se lee como nombre: caja baja y tamaño de titular
+           pequeño. En versales de 10px parecia una etiqueta de categoria mas. -->
+      <p
+        class="mb-4 text-[22px] leading-none font-extrabold tracking-[-0.025em] text-soft sm:text-[26px]"
+      >
+        {{ eyebrow() }}
+      </p>
+    } @else {
+      <p class="mb-6 font-mono text-[10.5px] font-medium tracking-[0.18em] text-soft uppercase">
+        {{ eyebrow() }}
+      </p>
+    }
 
     <h1
       class="max-w-[860px] text-[32px] leading-[1.06] font-extrabold tracking-[-0.035em] text-white sm:text-[42px] lg:text-[50px]"

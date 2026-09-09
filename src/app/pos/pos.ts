@@ -22,7 +22,7 @@ export class Pos {
 
   protected readonly breadcrumbs: readonly BreadcrumbItem[] = [
     { label: 'Inicio', path: '/' },
-    { label: 'POS', path: '/pos' },
+    { label: 'Zemli', path: '/pos' },
   ];
 
   protected readonly heroHighlights: readonly string[] = [

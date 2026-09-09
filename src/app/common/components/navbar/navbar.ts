@@ -24,10 +24,13 @@ export class Navbar {
   private readonly host = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
 
+  // Los tres primeros son los nombres de los productos. En la barra van solos porque
+  // el espacio manda; quien necesita saber que es cada uno lo tiene en el pie, donde
+  // el nombre va acompañado de su descripcion.
   protected readonly links: readonly NavLink[] = [
-    { label: 'POS', path: '/pos' },
-    { label: 'Agentes de IA', path: '/agentes-ia' },
-    { label: 'Ventas', path: '/plataforma-ventas' },
+    { label: 'Zemli', path: '/pos' },
+    { label: 'Soy Alondra', path: '/agentes-ia' },
+    { label: 'Mesa Origen', path: '/plataforma-ventas' },
     { label: 'Blog', path: '/blog' },
     { label: 'Nosotros', path: '/nosotros' },
   ];

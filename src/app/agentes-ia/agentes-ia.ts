@@ -22,7 +22,7 @@ export class AgentesIa {
 
   protected readonly breadcrumbs: readonly BreadcrumbItem[] = [
     { label: 'Inicio', path: '/' },
-    { label: 'Agentes de IA', path: '/agentes-ia' },
+    { label: 'Soy Alondra', path: '/agentes-ia' },
   ];
 
   protected readonly heroHighlights: readonly string[] = [

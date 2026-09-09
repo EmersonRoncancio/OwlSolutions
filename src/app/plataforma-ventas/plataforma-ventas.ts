@@ -22,7 +22,7 @@ export class PlataformaVentas {
 
   protected readonly breadcrumbs: readonly BreadcrumbItem[] = [
     { label: 'Inicio', path: '/' },
-    { label: 'Plataforma de ventas', path: '/plataforma-ventas' },
+    { label: 'Mesa Origen', path: '/plataforma-ventas' },
   ];
 
   protected readonly heroHighlights: readonly string[] = [

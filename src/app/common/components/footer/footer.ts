@@ -15,12 +15,15 @@ export class Footer {
     {
       title: 'Productos',
       links: [
-        { label: 'POS con facturación DIAN', href: '/pos' },
+        // Aqui el nombre va con su descripcion: el pie hace de mapa del sitio, y
+        // «Zemli» a secas no le dice nada a quien llega de una busqueda. Ademas
+        // enlaza las paginas satelite («POS para restaurantes») con su producto.
+        { label: 'Zemli · POS con facturación DIAN', href: '/pos' },
         { label: 'POS para restaurantes', href: '/pos-restaurantes' },
         { label: 'POS para tiendas', href: '/pos-tiendas' },
         { label: 'Facturación electrónica', href: '/facturacion-electronica' },
-        { label: 'Agentes de IA', href: '/agentes-ia' },
-        { label: 'Plataforma de ventas', href: '/plataforma-ventas' },
+        { label: 'Soy Alondra · Agentes de IA', href: '/agentes-ia' },
+        { label: 'Mesa Origen · Plataforma de ventas', href: '/plataforma-ventas' },
       ],
     },
     {
